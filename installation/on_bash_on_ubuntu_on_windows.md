@@ -1,6 +1,6 @@
-# Windows'taki Ubuntu'da Bash'de
+# Ubuntu on Windows üzerindeki Bash'de
 
-Crystal _henüz_ Windows'u desteklemiyor, lakin eğer Windows 10 kullanıyorsanız, Crystal'i [Windows'taki Ubuntu'da Bash'de](https://msdn.microsoft.com/en-us/commandline/wsl/about) kullanarak deneyebilirsiniz(deneysel olarak). Deneysel bir Bash ortamı Windows'ta çalışmakta. Kurulum talimatları [Debian/Ubuntu](on_debian_and_ubuntu.md) ile aynı, ama dikkat edilmesi gereken birkaç pürüzlü noktalar bulunmaktadır.
+Crystal _henüz_ Windows'u desteklemiyor, lakin eğer Windows 10 kullanıyorsanız, Crystal'i [Ubuntu on Windows üzerindeki Bash'i](https://msdn.microsoft.com/en-us/commandline/wsl/about) kullanarak deneyebilirsiniz(deneysel olarak). Deneysel bir Bash ortamı Windows'ta çalışmakta. Kurulum talimatları [Debian/Ubuntu](on_debian_and_ubuntu.md) ile aynı, ama dikkat edilmesi gereken birkaç pürüzlü nokta bulunmakta.
 
 Unutmayın - **bu son derece deneysel**.
 
@@ -29,7 +29,7 @@ sudo apt-get install clang binutils
 ```
 
 ## Kurulum
-Depo yapılandırıldıktan ve bağımlılıkları halledildikten sonra, Crystal'i yüklemeye hazırsınızdır:
+Depo yapılandırıldıktan ve bağımlılıkları halledildikten sonra, Crystal'i yüklemeye hazırsınız:
 
 ```
 sudo apt-get install crystal
