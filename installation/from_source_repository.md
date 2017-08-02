@@ -1,8 +1,8 @@
-# Kaynaklardan
+# Kaynak kod üzerinden
 
-Katkıda bulunmak istiyorsanız, Crystal'i kaynaklardan yüklemek isteyebilirsiniz.
+Katkıda bulunmak istiyorsanız, Crystal'i kaynak kod üzerinden yüklemek isteyebilirsiniz.
 
-1. [En son Crystal sürümünü yükleyin](https://crystal-lang.org/docs/installation). Crystal'i derlemek için , Crystal'e ihtiyacınız olacak :).
+1. [En son Crystal sürümünü yükleyin](https://crystal-lang.org/docs/installation). Crystal'i derlemek için, Crystal'e ihtiyacınız olacak :).
 
 2. Desteklenen bir LLVM sürümünün o dizinde bulunduğundan emin olun. Şu anda, Crystal LLVM 3.8, 3.9 and 4.0 destekliyor. Mümkün olduğunca en son sürümü kullanın. Eğer Mac ve Homebrew formülünü kullanıyorsanız, Crystal'i kurarken --with-llvm` flagını eklerseniz, sizin için otomatik olarak yapılandırılmış gelecektir.
 
@@ -20,4 +20,4 @@ git clone https://github.com/crystal-lang/crystal.git
 
 Yeni `bin/crystal` hakkında daha fazla bilgi edinmek isterseniz, [derleyiciyi kullanmak](https://crystal-lang.org/docs/using_the_compiler/) dokümantasyonuna göz atın.
 
-Not: Asıl binary `.build/crystal` içinde yerleşik ama `bin/crystal` wrapper betiği crystal çalıştırmak için kullanmanız gereken.
+Not: Asıl binary `.build/crystal` içine kurulmuştur, ancak `bin/crystal` wrapper betiği crystal'i çalıştırmak için kullanmanız gereken şeydir.
