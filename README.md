@@ -1,25 +1,22 @@
-# Crystal Programming Language
+# Crystal Programlama Dili
 
 This is the documentation for the Crystal programming language.
 
-Crystal is a programming language with the following goals:
+Crsytal, aşağıdaki amaçlar doğrultusunda bir programlama dilidir:
 
-* Have a syntax similar to Ruby (but compatibility with it is not a goal).
-* Be statically type-checked, but without having to specify the type of variables or method arguments.
-* Be able to call C code by writing bindings to it in Crystal.
-* Have compile-time evaluation and generation of code, to avoid boilerplate code.
-* Compile to efficient native code.
+* Ruby'ye yakın bir sözdizimine sahip olması (ancak Ruby ile uyumluluk bir amaç değildir).
+* Statik tip kontrollü olması, fakat metot argümanlarının ya da değişkenlerin tiplerini belirlemek zorunda kalmadan.
+* Crystal'in içinde bağlayıcılar yazarak C kodunun çağırılabilmesi.
+* Basmakalıp kodlardan kaçınmak için derlenme zamanı ölçümü ve kod üretimine sahip olması.
+* Verimli bir şekilde native koda derlenmesi.
 
-## Contributing to the Language Reference
+## Dil Referansına Katkıda Bulunmak
 
-Do you consider yourself a helpful person? If you find bugs or sections
-which need more clarification you're welcome to contribute to this
-documentation. You can submit a pull request to this repository:
-https://github.com/crystal-lang/crystal-book
+Kendini yardımsever biri olarak mı görüyorsun? Eğer bug bulursan veya daha anlaşılır olması gerektiğini düşündüğün bölümler var ise bu dokümantasyona katkıda bulunmandan ötürü çok mutlu oluruz. Burada bulunan repoya pull request atabilirsin : https://github.com/crystal-lang/crystal-book
 
-Thank you very much!
+Çok teşekkür ederiz!
 
-### Building and Serving Locally
+### Lokal Ortamda Sunmak ve Derlemek
 
 ```
 $ git clone https://github.com/crystal-lang/crystal-book.git
@@ -38,8 +35,9 @@ Serving book on http://localhost:4000
 
 ```
 
-Html output will be in `_book` folder (some links won't work if opening the files locally).
-There is also a docker environment to avoid installing dependencies globally:
+Html çıktısı _book dosyasının içinde olacak (bazı linkler eğer dosyaları lokalde açarsanız çalışmayabilir).
+
+Bağımlılıkları global olarak yüklemekten kaçınmak için Docker ortamı da bulunmaktadır:
 
 ```
 $ docker-compose up
@@ -50,6 +48,6 @@ gitbook_1  | Restart after change in file node_modules/.bin
 ...
 ```
 
-### Adding a page
+### Sayfa ekleme
 
-To add a page, create a markdown file in the desired location. Example: `overview/hello_world.md`. Then, add a link in the `SUMMARY.md` file which acts as the navigation for the documentation.
+Bir sayfa eklemek için, istediğiniz konuma bir markdown dosyası oluşturun. Örnek: `overview/hello_world.md` . Ardından belgeler için gezinme görevi gören `SUMMARY.md` dosyasına bir bağlantı ekleyin.
