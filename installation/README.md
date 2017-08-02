@@ -8,4 +8,4 @@ Aşağıdaki yöntemlerden birini kullanarak derleyiciyi kurduktan sonra, nasıl
 * [Mac OSX'da Homebrew kullanarak](on_mac_osx_using_homebrew.html)
 * [Windows'ta Ubuntu'da Bash'de](on_bash_on_ubuntu_on_windows.html)
 * [tar.gz'den](from_a_targz.html)
-* [Kaynaklardan](from_source_repository.html)
+* [Kaynak kod üzerinden](from_source_repository.html)
