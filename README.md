@@ -1,12 +1,12 @@
 # Crystal Programlama Dili
 
-This is the documentation for the Crystal programming language.
+Bu belgeler Crystal programlama dili içindir.
 
-Crsytal, aşağıdaki amaçlar doğrultusunda bir programlama dilidir:
+Crystal, aşağıdaki amaçlar doğrultusunda bir programlama dilidir:
 
 * Ruby'ye yakın bir sözdizimine sahip olması (ancak Ruby ile uyumluluk bir amaç değildir).
 * Statik tip kontrollü olması, fakat metot argümanlarının ya da değişkenlerin tiplerini belirlemek zorunda kalmadan.
-* Crystal'in içinde bağlayıcılar yazarak C kodunun çağırılabilmesi.
+* Crystal'in içinde bağlayıcılar(bindings) yazarak C kodunun çağırılabilmesi.
 * Basmakalıp kodlardan kaçınmak için derlenme zamanı ölçümü ve kod üretimine sahip olması.
 * Verimli bir şekilde native koda derlenmesi.
 
