@@ -1,6 +1,6 @@
-# From a tar.gz
+# tar.gz'den
 
-Herhangi bir nedenle önceki kurulum yöntemlerinden birisini kullanmak istemiyorsanız veya kullanamıyorsanız.Crystal'i başlangıçta ihtiyacınız olan her şeyden bağımsız bir .tar.gz dosyasında indirebilirsiniz.
+Herhangi bir nedenle önceki kurulum yöntemlerinden birisini kullanmak istemiyorsanız veya kullanamıyorsanız. Crystal'i başlangıçta ihtiyacınız olan her şeyden bağımsız bir .tar.gz dosyasında indirebilirsiniz.
 
 En yeni dosyaları Github'daki Releases sayfasında bulabilirsiniz: https://github.com/crystal-lang/crystal/releases
 
