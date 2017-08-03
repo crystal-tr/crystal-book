@@ -1,6 +1,6 @@
 # Genel Bakış
 
-Bu belgeyi üstten alta doğru okuyabilirsiniz, ancak bazı kavramlar birbiriyle ilişkili olduğu için ayrı ayrı atlamak önerilir ve diğerlerinden ayrı bir şekilde açıklanamaz.
+Bu belgeyi yukarıdan aşağıya doğru okuyabilirsiniz, ancak bazı kavramlar birbiriyle ilişkili olduğu için ayrı ayrı atlamak önerilir ve diğerlerinden ayrı bir şekilde açıklanamaz.
 
 Kod örneklemelerinde `#=>`  yorumu, verilen ifadenin değerini göstermek için kullanılır. Örneğin:
 
