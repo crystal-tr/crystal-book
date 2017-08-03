@@ -1,6 +1,6 @@
 # Proc
 
-Bir [Proc](http://crystal-lang.org/api/Proc.html) opsiyonel içerik(the closure data)  ile beraber bir fonksiyon işaretçisini(pointer)  temsil eder. Genellikle proc literali ile beraber oluşturulur:
+Bir [Proc](http://crystal-lang.org/api/Proc.html) opsiyonel içerik(the closure data) ile beraber bir fonksiyon işaretçisini(pointer) temsil eder. Genellikle proc literali ile beraber oluşturulur:
 
 ```crystal
 # Argümanı olmayan bir proc:
