@@ -7,7 +7,7 @@ Bir [Array](http://crystal-lang.org/api/Array.html) `T` tipinde elemanlar içere
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-Bir Array karışık türlere sahip olabilir, yani `T`, bir tip birleşimi olacaktır; ancak bunlar, dizi oluşturulduğunda T belirterek veya bir array literali kullanarak belirlenir. İkinci durumda, T array literal elemanlarının birleşimine ayarlanır.
+Bir Array karışık tiplere sahip olabilir, yani `T`, bir tip birleşimi olacaktır; ancak bunlar, dizi oluşturulduğunda T belirterek veya bir array literali kullanarak belirlenir. İkinci durumda, T array literal elemanlarının birleşimine ayarlanır.
 
 Boş bir array oluştururken her zaman T'yi belirtmemiz gerekir::
 
