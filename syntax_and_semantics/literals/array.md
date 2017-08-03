@@ -1,13 +1,13 @@
 # Array
 
-Bir [Array](http://crystal-lang.org/api/Array.html) `T` tipinde elemanlar içeren bir jenerik tiptir. Genellikle array literali ile oluşturulur:
+Bir [Array](http://crystal-lang.org/api/Array.html) `T` tipinde elemanlar içeren jenerik bir tiptir. Genellikle array literali ile oluşturulur:
 
 ```crystal
 [1, 2, 3]         # Array(Int32)
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-Bir Array karışık türlere sahip olabilir, yani `T`, bir tür birleşimi olacaktır; ancak bunlar, dizi oluşturulduğunda T belirterek veya bir array literali kullanarak belirlenir. İkinci durumda, T array literal elemanlarının birleşimine ayarlanır.
+Bir Array karışık türlere sahip olabilir, yani `T`, bir tip birleşimi olacaktır; ancak bunlar, dizi oluşturulduğunda T belirterek veya bir array literali kullanarak belirlenir. İkinci durumda, T array literal elemanlarının birleşimine ayarlanır.
 
 Boş bir array oluştururken her zaman T'yi belirtmemiz gerekir::
 
