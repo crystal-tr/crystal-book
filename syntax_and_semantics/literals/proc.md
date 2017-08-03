@@ -1,64 +1,64 @@
 # Proc
 
-A [Proc](http://crystal-lang.org/api/Proc.html) represents a function pointer with an optional context (the closure data). It is typically created with a proc literal:
+Bir [Proc](http://crystal-lang.org/api/Proc.html) opsiyonel içerik(the closure data)  ile beraber bir fonksiyon işaretçisini(pointer)  temsil eder. Genellikle proc literali ile beraber oluşturulur:
 
 ```crystal
-# A proc without arguments
+# Argümanı olmayan bir proc:
 ->{ 1 } # Proc(Int32)
 
-# A proc with one argument
+# Bir argümanı olan bir proc:
 ->(x : Int32) { x.to_s } # Proc(Int32, String)
 
-# A proc with two arguments:
+# İki argümanı olan bir proc:
 ->(x : Int32, y : Int32) { x + y } # Proc(Int32, Int32, Int32)
 ```
 
-The types of the arguments are mandatory, except when directly sending a proc literal to a lib `fun` in C bindings.
+Argümanların tipleri zorunludur. Ancak C bağlamlarındaki(bindings) 'fun' kütüphanesine doğrudan bir proc literali gönderirken zorunlu değildir.
 
-The return type is inferred from the proc's body.
+Geri dönüş tipi o procun gövdesinden(body) dönen tipinden anlamlandırılır.
 
-A special `new` method is provided too:
+Özel `new` metodu da bulunmaktadır:
 
 ```crystal
 Proc(Int32, String).new { |x| x.to_s } # Proc(Int32, String)
 ```
 
-This form allows you to specify the return type and to check it against the proc's body.
+Bu form, dönüş tipini belirtmenize ve procun gövdesine karşı kontrol etmenize izin verir.
 
-## The Proc type
+## The Proc tipi
 
-To denote a Proc type you can write:
+Proc tipini belirtmek için aşağıdakini yazabilirsiniz:
 
 ```crystal
-# A Proc accepting a single Int32 argument and returning a String
+# Tek argüman (Int32) kabul eden ve String dönen bir proc: 
 Proc(Int32, String)
 
-# A proc accepting no arguments and returning Void
+# Argüman kabul etmeyen ve Void dönen bir proc:
 Proc(Void)
 
-# A proc accepting two arguments (one Int32 and one String) and returning a Char
+# İki argüman (bir Int32 ve bir String) kabul eden ve Char dönen bir proc:
 Proc(Int32, String, Char)
 ```
 
-In type restrictions, generic type arguments and other places where a type is expected, you can use a shorter syntax, as explained in the [type](../type_grammar.html):
+Tip kısıtlamalarında, jenerik tipteki argümanlar ve bir tipin beklendiği diğer yerlerde, [tip grameri](../type_grammar.html)'nde açıklandığı gibi, daha kısa bir sözdizimi kullanabilirsiniz:
 
 ```crystal
-# An array of Proc(Int32, String, Char)
+# Bir Proc(Int32, String, Char) arrayi:
 Array(Int32, String -> Char)
 ```
 
-## Invoking
+## Çalıştırma
 
-To invoke a Proc, you invoke the `call` method on it. The number of arguments must match the proc's type:
+Bir procu çalıştırmak için `call` metodu o procun üstünde çalıştırılır. Argümanların sayısı procun tipi ile eşleşmelidir:
 
 ```crystal
 proc = ->(x : Int32, y : Int32) { x + y }
 proc.call(1, 2) #=> 3
 ```
 
-## From methods
+## Metotlardan
 
-A Proc can be created from an existing method:
+Var olan metotlardan bir proc yaratılabilir.
 
 ```crystal
 def one
@@ -69,7 +69,7 @@ proc = ->one
 proc.call #=> 1
 ```
 
-If the method has arguments, you must specify their types:
+Eğer metodun argümanları varsa, hepsinin tipleri belirtilmelidir:
 
 ```crystal
 def plus_one(x)
@@ -80,7 +80,7 @@ proc = ->plus_one(Int32)
 proc.call(41) #=> 42
 ```
 
-A proc can optionally specify a receiver:
+Bir proc opsiyonel olarak bir alıcı(receiver) belirleyebilir:
 
 ```crystal
 str = "hello"

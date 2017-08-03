@@ -47,7 +47,7 @@ Bütün dokümantasyonu okuduktan sonra yukarıdaki kod anlamlı olacaktır, anc
     end
     ```
 
-* Dize ara değerlemesi(string interpolation) olarak da bilinen gömülü içeriğe sahip dizeleri kolayca oluşturabilirsiniz. Dil'in [syntax](../syntax_and_semantics/literals.html)'ı arrayler, hashler, rangeler, tuplelar ve daha fazlası ile birlikte gelir:
+* Dize ara değerlemesi(string interpolation) olarak da bilinen gömülü içeriğe sahip stringleri kolayca oluşturabilirsiniz. Dil'in [syntax](../syntax_and_semantics/literals.html)'ı arrayler, hashler, rangeler, tuplelar ve daha fazlası ile birlikte gelir:
 
     ```ruby
     "Hello world! The time is #{Time.now}"

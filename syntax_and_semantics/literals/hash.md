@@ -1,30 +1,30 @@
 # Hash
 
-A [Hash](http://crystal-lang.org/api/Hash.html) representing a mapping of keys of a type `K` to values of a type `V`. It is typically created with a hash literal:
+Bir [Hash] (http://crystal-lang.org/api/Hash.html), 'K' türündeki anahtarların bir eşlemesini 'V' türündeki değerlere dönüştürmeyi temsil eder. Genellikle bir hash literali ile oluşturulur:
 
 ```crystal
 {1 => 2, 3 => 4}     # Hash(Int32, Int32)
 {1 => 2, 'a' => 3}   # Hash(Int32 | Char, Int32)
 ```
 
-A Hash can have mixed types, both for the keys and values, meaning `K`/`V` will be union types. These types are determined when the hash is created, either by specifying `K` and `V` or by using a hash literal. In the latter case, `K` will be set to the union of the hash literal keys, and `V` will be set to the union of the hash literal values.
+Bir Hash, anahtarlar ve değerler için karışık türlere sahip olabilir, yani `K` /` V` birleşim türleri olacaktır. Bu türler, hash oluşturulduğunda veya `K` ve` V` 'belirtilerek veya karma bir harf kullanarak belirlenir. İkinci durumda, `K`, hash literal anahtarların birleşimine ayarlanır ve `V`, hash literal değerlerin birleşimine ayarlanır.
 
-When creating an empty hash you must always specify `K` and `V`:
+Boş bir hash oluştururken her zaman `K` ve` V`leri belirtmelisiniz:
 
 ```crystal
-{} of Int32 => Int32 # same as Hash(Int32, Int32).new
-{}                   # syntax error
+{} of Int32 => Int32 # Hash(Int32, Int32).new ile aynı
+{}                   # sözdizimi hatası(syntax error)
 ```
 
-## Hash-like types
+## Hash benzeri tipler
 
-You can use a special hash literal syntax with other types too, as long as they define an argless `new` method and a `[]=` method:
+Argümansız `new` metodu tanımlayıp, `[]=` metodu ile diğer tiplerle de özel bir hash literal sözdizimi, kullanabilirsiniz.
 
 ```crystal
 MyType{"foo" => "bar"}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+Eğer `MyType` jenerik değilse, yukarıdaki ifade aşağıdakine eşdeğerdir:
 
 ```crystal
 tmp = MyType.new
@@ -32,7 +32,7 @@ tmp["foo"] = "bar"
 tmp
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+Eğer `MyType` jenerik ise, yukarıdaki ifade aşağıdakine eşdeğerdir:
 
 ```crystal
 tmp = MyType(typeof("foo"), typeof("bar")).new
@@ -40,7 +40,7 @@ tmp["foo"] = "bar"
 tmp
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+Jenerik olması durumunda, argüman tipleri şu şekilde de belirtilebilir:
 
 ```crystal
 MyType(String, String) {"foo" => "bar"}

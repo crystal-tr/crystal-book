@@ -1,9 +1,8 @@
 # Bool
 
-[Bool](http://crystal-lang.org/api/Bool.html) has only two possible values: `true` and `false`. They are constructed using the following literals:
-
+[Bool](http://crystal-lang.org/api/Bool.html)'un `true` ve `false` olarak sadece iki muhtemel değeri olabilir. Aşağıdaki literalleri kullanarak oluşturulurlar:
 
 ```crystal
-true  # A Bool that is true
-false # A Bool that is false
+true  # true olan bir Bool
+false # false olan bir Bool
 ```

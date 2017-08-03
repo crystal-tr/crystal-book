@@ -1,6 +1,6 @@
 # Regex
 
-Regular expressions are represented by the [Regex](http://crystal-lang.org/api/Regex.html) class, which is usually created with a literal:
+Düzenli ifadeler genellikle bir literal ile oluşturulmuş [Regex](http://crystal-lang.org/api/Regex.html) sınıfıyla temsil edilir:
 
 ```crystal
 foo_or_bar = /foo|bar/
@@ -8,13 +8,13 @@ heeello    = /h(e+)llo/
 integer    = /\d+/
 ```
 
-A regular expression literal is delimited by `/` and uses [PCRE](http://pcre.org/pcre.txt) syntax.
+Bir düzenli ifade literali `/` ile sınırlandrılmıştır ve [PCRE](http://pcre.org/pcre.txt) sözdizimini kullanır.
 
-It can be followed by these modifiers:
+Aşağıdaki düzenleyiciler de eklenebilir:
 
-* i: ignore case (PCRE_CASELESS)
-* m: multiline (PCRE_MULTILINE)
-* x: extended (PCRE_EXTENDED)
+* i: yoksayma durumu(ignore case) (PCRE_CASELESS)
+* m: çok satırlı(multiline) (PCRE_MULTILINE)
+* x: genişletilmiş(extended) (PCRE_EXTENDED)
 
 For example
 
@@ -22,13 +22,13 @@ For example
 r = /foo/imx
 ```
 
-Slashes must be escaped:
+Slash(`/`)'ta her zaman kaçış uygulanmalı
 
 ```crystal
 slash = /\//
 ```
 
-An alternative syntax is provided:
+Alternatif bir sözdizimi bulunmaktadır:
 
 ```crystal
 r = %r(regex with slash: /)
