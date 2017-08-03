@@ -1,9 +1,9 @@
 # Char
 
-A [Char](http://crystal-lang.org/api/Char.html) represents a [Unicode](http://en.wikipedia.org/wiki/Unicode) [code point](http://en.wikipedia.org/wiki/Code_point).
-It occupies 32 bits.
+Bir [Char](http://crystal-lang.org/api/Char.html), bir [Unicode](http://en.wikipedia.org/wiki/Unicode) [kod noktası](http://en.wikipedia.org/wiki/Code_point)'nı temsil eder.
+32 bitlik yer kaplar.
 
-It is created by enclosing an UTF-8 character in single quotes.
+Bir UTF-8 karakterini tek tırnak içine alınca oluşturulur.
 
 ```crystal
 'a'
@@ -13,26 +13,27 @@ It is created by enclosing an UTF-8 character in single quotes.
 'あ'
 ```
 
-You can use a backslash to denote some special characters:
+Bazı özel karakterleri belirtmek için ters eğik çizgi(`\`) kullanabilirsiniz:
 
 ```crystal
-'\'' # single quote
-'\\' # backslash
-'\e' # escape
-'\f' # form feed
-'\n' # newline
-'\r' # carriage return
-'\t' # tab
-'\v' # vertical tab
+'\'' # tek tırnak(single quote)
+'\\' # ters eğik çizgi(backslash)
+'\e' # kaçış(escape)
+'\f' # sayfa ilerletme(form feed)
+'\n' # yeni satır(newline)
+'\r' # satırbaşı(carriage return)
+'\t' # sekme(tab)
+'\v' # dikey sekme(vertical tab)
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint written:
+
+Yazılmış bir unicode kod noktasını belirtmek için bir ters eğik çizgi ile ardından bir *u* ve dört onaltılık karakter kullanabilirsiniz:
 
 ```crystal
 '\u0041' # == 'A'
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+Veya açıkça belirtmek için süslü parantez ile birlikte 6 onaltılık sayıya kadar kullanabilirsiniz (0'dan 10FFFF'e kadar):
 
 ```crystal
 '\u{41}'    # == 'A'

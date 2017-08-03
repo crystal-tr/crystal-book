@@ -1,6 +1,6 @@
 # Nil
 
-The [Nil](http://crystal-lang.org/api/Nil.html) type is used to represent the absence of a value, not unlike `null` in other languages. It only has a single value:
+Bir değerin yokluğunu temsil etmek için [Nil](http://crystal-lang.org/api/Nil.html) kullanılır ve diğer dillerdeki `null` gibi değildir. Sadece tek bir değeri olur:
 
 ```crystal
 nil

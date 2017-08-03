@@ -1,6 +1,6 @@
-# Comments
+# Yorumlar
 
-Comments start with the sharp (`#`) character. Only one-line comments are supported for now.
+Yorumlar (`#`) karakteri ile başlar. Şimdilik sadece bir satırlık yorumlar desteklenmektedir.
 
 ```crystal
 # This is a comment

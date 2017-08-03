@@ -1,46 +1,46 @@
 # Array
 
-An [Array](http://crystal-lang.org/api/Array.html) is a generic type containing elements of a type `T`. It is typically created with an array literal:
+Bir [Array](http://crystal-lang.org/api/Array.html) `T` tipinde elemanlar içeren jenerik bir tiptir. Genellikle array literali ile oluşturulur:
 
 ```crystal
 [1, 2, 3]         # Array(Int32)
 [1, "hello", 'x'] # Array(Int32 | String | Char)
 ```
 
-An Array can have mixed types, meaning `T` will be a union of types, but these are determined when the array is created, either by specifying T or by using an array literal. In the latter case, T will be set to the union of the array literal elements.
+Bir Array karışık tiplere sahip olabilir, yani `T`, bir tip birleşimi olacaktır; ancak bunlar, dizi oluşturulduğunda T belirterek veya bir array literali kullanarak belirlenir. İkinci durumda, T array literal elemanlarının birleşimine ayarlanır.
 
-When creating an empty array you must always specify T:
+Boş bir array oluştururken her zaman T'yi belirtmemiz gerekir::
 
 ```crystal
-[] of Int32 # same as Array(Int32).new
-[]          # syntax error
+[] of Int32 # Array(Int32).new ile aynı
+[]          # sözdizimi hatası(syntax error)
 ```
 
-## Array of String
+## String Array'i
 
-Arrays of strings can be created with a special syntax:
+String arrayleri özel bir sözdizimi kullanılarak yaratılabilir:
 
 ```crystal
 %w(one two three) # ["one", "two", "three"]
 ```
 
-## Array of Symbol
+## Symbol Array'i
 
-Arrays of symbols can be created with a special syntax:
+Symbol arrayleri özel bir sözdizimi kullanılarak yaratılabilir:
 
 ```crystal
 %i(one two three) # [:one, :two, :three]
 ```
 
-## Array-like types
+## Array benzeri tipler
 
-You can use a special array literal syntax with other types too, as long as they define an argless `new` method and a `<<` method:
+Argümansız `new` metodu tanımlayıp, `<<` metodu ile diğer tiplerle de özel bir array literal sözdizimi, kullanabilirsiniz.
 
 ```crystal
 MyType{1, 2, 3}
 ```
 
-If `MyType` is not generic, the above is equivalent to this:
+Eğer `MyType` jenerik değilse, yukarıdaki ifade aşağıdakine eşdeğerdir:
 
 ```crystal
 tmp = MyType.new
@@ -50,7 +50,7 @@ tmp << 3
 tmp
 ```
 
-If `MyType` is generic, the above is equivalent to this:
+Eğer `MyType` jenerik ise, yukarıdaki ifade aşağıdakine eşdeğerdir:
 
 ```crystal
 tmp = MyType(typeof(1, 2, 3)).new
@@ -60,7 +60,7 @@ tmp << 3
 tmp
 ```
 
-In the case of a generic type, the type arguments can be specified too:
+Jenerik olması durumunda, argüman tipleri şu şekilde de belirtilebilir:
 
 ```crystal
 MyType(Int32 | String) {1, 2, "foo"}

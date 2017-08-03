@@ -1,10 +1,10 @@
 # Range
 
-A [Range](http://crystal-lang.org/api/Range.html) is typically constructed with a range literal:
+Bir [Range](http://crystal-lang.org/api/Range.html) genellikle range literali kullanılarak oluşturulur:
 
 ```crystal
-x..y  # an inclusive range, in mathematics: [x, y]
-x...y # an exclusive range, in mathematics: [x, y)
+x..y  # matematikte kullanılan kapsayan bir range: [x, y]
+x...y # matematikte kullanılan kapsamayan bir range: [x, y)
 ```
 
-An easy way to remember which one is inclusive and which one is exclusive it to think of the extra dot as if it pushes *y* further away, thus leaving it outside of the range.
+Hangisinin kapsayan olduğunu ve hangisinin kapsamayan olduğunu hatırlamanın kolay bir yolu, ekstra noktayı *y* uzağa iterek sanki aralık dışında bırakılmış gibi düşünmesini sağlamaktır.

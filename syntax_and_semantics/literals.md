@@ -1,3 +1,3 @@
-# Literals
+# Literaller
 
-Several literals are available for creating many basic types in the language.
+Dilde birçok temel tip oluşturmak için birçok literale erişilebilir.
