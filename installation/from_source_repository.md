@@ -20,4 +20,4 @@ git clone https://github.com/crystal-lang/crystal.git
 
 Yeni `bin/crystal` hakkında daha fazla bilgi edinmek isterseniz, [derleyiciyi kullanmak](https://crystal-lang.org/docs/using_the_compiler/) dokümantasyonuna göz atın.
 
-Not: Asıl binary `.build/crystal` içine kurulmuştur, ancak `bin/crystal` wrapper betiği crystal'i çalıştırmak için kullanmanız gereken şeydir.
+Not: Asıl binary `.build/crystal` içine kurulmuştur, ancak `bin/crystal` wrapper betiği Crystal'i çalıştırmak için kullanmanız gereken şeydir.

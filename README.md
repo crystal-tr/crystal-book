@@ -35,7 +35,7 @@ Serving book on http://localhost:4000
 
 ```
 
-Html çıktısı _book dosyasının içinde olacak (bazı linkler eğer dosyaları lokalde açarsanız çalışmayabilir).
+Html çıktısı `_book` dosyasının içinde olacak (bazı linkler eğer dosyaları lokalde açarsanız çalışmayabilir).
 
 Bağımlılıkları global olarak yüklemekten kaçınmak için Docker ortamı da bulunmaktadır:
 

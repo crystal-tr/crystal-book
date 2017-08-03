@@ -1,52 +1,52 @@
-# Using the compiler
+# Derleyiciyi kullanma
 
-Once you [install](../installation/README.md) the compiler you will have a `crystal` binary at your disposal.
+Bir defa [kurduğunuz zaman](../installation/README.md) derleyici, elinizin altında `crystal` şeklinde bir binary olacak.
 
-In the next sections a dollar sign (`$`) denotes the command line.
+Önümüzdeki bölümlerde (`$`) işareti komut satırı anlamına gelmektedir.
 
-## Compiling and running at once
+## Derleme and bir defa çalıştırmak
 
-To compile and run a program in a single shot you can invoke `crystal` with a single filename:
+Bir programı `crystal` ile dosya ismini yazarak çağırıp derleyip çalıştırabilirsiniz:
 
 ```
 $ crystal some_program.cr
 ```
 
-Crystal files end with the `.cr` extension.
+Crystal dosyaları `.cr` uzantısı ile biter.
 
-Alternative you can use the `run` command:
+Alternatif olarak `run` komutunu da kullanabilirsiniz:
 
 ```
 $ crystal run some_program.cr
 ```
 
-## Creating an executable
+## Bir yürütülebilir(executable) oluşturma
 
-To create an executable use the `build` command:
+Bir yürütülebilir(executable) oluşturmak için `build` komutu kullanılır:
 
 ```
 $ crystal build some_program.cr
 ```
 
-This will create a `some_program` file that you can execute:
+Bu işlem sonunda çalıştırabileceğiniz `some_program` dosyası oluşturulacak:
 
 ```
 $ ./some_program
 ```
 
-**Note:** By default the generated executables **are not fully optimized**. To turn optimizations on, use the `--release` flag:
+**Not:** Varsayılan olarak, oluşturulan yürütülebilir **tamamen optimize edilmemiştir**. Optimizasyonu etkinleştirmek için `--release` flagını kullanın:
 
 ```
 $ crystal build some_program.cr --release
 ```
 
-Make sure to always use `--release` for production-ready executables and when performing benchmarks.
+Kalite testi(benchmark) gerçekleştirirken ve üretime hazır(production-ready) yürütülebilir, her zaman `--release`'i kullandığınızdan emin olun.
 
-The reason for this is that performance without full optimizations is still pretty good and provides fast compile times, so you can use the `crystal` command almost as if it were an interpreter.
+Bunun nedeni, tam iyileştirmeler yapılmadan yapılan performansın hala oldukça iyi olması ve hızlı derleme zamanları sağlamasıdır, böylece `crystal` komutunu neredeyse bir yorumcu(interpreter) gibi kullanabilir.
 
-## Creating a project or library
+## Proje veya kütüphane oluşturma
 
-Use the `init` command to create a Crystal project with the standard directory structure.
+Standart dizin yapısıyla bir Crystal projesi oluşturmak için `init` komutunu kullanın:
 
 ```
 $ crystal init lib my_cool_lib
@@ -62,9 +62,9 @@ $ crystal init lib my_cool_lib
 Initialized empty Git repository in ~/my_cool_lib/.git/
 ```
 
-## Other commands and options
+## Diğer komutlar ve seçenekler
 
-To see the full set of commands, invoke `crystal` without arguments.
+Komut setinin tümünü görüntülemek için, argümanlar olmadan `crystal` komutunu çalıştırın:
 
 ```
 $ crystal
@@ -85,7 +85,7 @@ Command:
     version, --version, -v   show version
 ```
 
-To see the available options for a particular command, use `--help` after a command:
+Belirli bir komut için mevcut seçenekleri görmek için, bir komuttan sonra `--help`'i kullanın:
 
 ```
 $ crystal build --help
