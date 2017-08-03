@@ -1,13 +1,13 @@
 # Hash
 
-Bir [Hash] (http://crystal-lang.org/api/Hash.html), 'K' türündeki anahtarların bir eşlemesini 'V' türündeki değerlere dönüştürmeyi temsil eder. Genellikle bir hash literali ile oluşturulur:
+Bir [Hash] (http://crystal-lang.org/api/Hash.html), 'K' tipindeki anahtarların bir eşlemesini 'V' tipindeki değerlere dönüştürmeyi temsil eder. Genellikle bir hash literali ile oluşturulur:
 
 ```crystal
 {1 => 2, 3 => 4}     # Hash(Int32, Int32)
 {1 => 2, 'a' => 3}   # Hash(Int32 | Char, Int32)
 ```
 
-Bir Hash, anahtarlar ve değerler için karışık türlere sahip olabilir, yani `K` /` V` birleşim türleri olacaktır. Bu türler, hash oluşturulduğunda veya `K` ve` V` 'belirtilerek veya karma bir harf kullanarak belirlenir. İkinci durumda, `K`, hash literal anahtarların birleşimine ayarlanır ve `V`, hash literal değerlerin birleşimine ayarlanır.
+Bir Hash, anahtarlar ve değerler için karışık tiplere sahip olabilir, yani `K` /` V` birleşim tipleri olacaktır. Bu tipler, hash oluşturulduğunda veya `K` ve` V` 'belirtilerek veya karma bir harf kullanarak belirlenir. İkinci durumda, `K`, hash literal anahtarların birleşimine ayarlanır ve `V`, hash literal değerlerin birleşimine ayarlanır.
 
 Boş bir hash oluştururken her zaman `K` ve` V`leri belirtmelisiniz:
 
