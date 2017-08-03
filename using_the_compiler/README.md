@@ -1,12 +1,12 @@
 # Derleyiciyi kullanma
 
-Bir defa [kurduğunuz zaman](../installation/README.md) derleyici, elinizin altında `crystal` şeklinde bir binary olacak.
+Derleyiciyi bir defa [kurduğunuz zaman](../installation/README.md) elinizin altında `crystal` şeklinde bir binary olacak.
 
 Önümüzdeki bölümlerde (`$`) işareti komut satırı anlamına gelmektedir.
 
-## Derleme and bir defa çalıştırmak
+## Derlemek ve bir defa çalıştırmak
 
-Bir programı `crystal` ile dosya ismini yazarak çağırıp derleyip çalıştırabilirsiniz:
+Bir programı `crystal` ile birlikte dosya ismini yazarak çağırıp derleyip çalıştırabilirsiniz:
 
 ```
 $ crystal some_program.cr
@@ -42,7 +42,7 @@ $ crystal build some_program.cr --release
 
 Kalite testi(benchmark) gerçekleştirirken ve üretime hazır(production-ready) yürütülebilir, her zaman `--release`'i kullandığınızdan emin olun.
 
-Bunun nedeni, tam iyileştirmeler yapılmadan yapılan performansın hala oldukça iyi olması ve hızlı derleme zamanları sağlamasıdır, böylece `crystal` komutunu neredeyse bir yorumcu(interpreter) gibi kullanabilir.
+Bunun nedeni, tam iyileştirmeler yapılmadan yapılan performansın hala oldukça iyi olması ve hızlı derleme zamanları sağlamasıdır, böylece `crystal` komutunu neredeyse bir yorumlayıcı(interpreter) gibi kullanabilir.
 
 ## Proje veya kütüphane oluşturma
 
