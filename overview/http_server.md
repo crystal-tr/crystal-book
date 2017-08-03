@@ -1,6 +1,6 @@
 # HTTP Sunucusu
 
-Biraz daha ilginç bir örnek, bir HTTP sunucusudur:
+Biraz daha ilginç bir örnek, bir HTTP sunucusu:
 
 ```crystal
 require "http/server"
@@ -14,7 +14,7 @@ puts "Listening on http://127.0.0.1:8080"
 server.listen
 ```
 
-Bütün dokümantasyonu okuduktan sonra yukarıdaki kod anlamlı olacaktır, ancak biz zaten bazı şeyler öğrenebiliriz.
+Bütün dokümantasyonu okuduktan sonra yukarıdaki kod anlamlı olacaktır, ancak biz zaten bazı şeyleri öğrenebiliriz.
 
 * Dosyada [require](../syntax_and_semantics/requiring_files.html) kullanarak  başka dosyalarda tanımlanmış kodları dahil edebilirsiniz:
 
@@ -27,7 +27,7 @@ Bütün dokümantasyonu okuduktan sonra yukarıdaki kod anlamlı olacaktır, anc
     server = HTTP::Server.new ...
     ```
 
-* [Methodlar](../syntax_and_semantics/classes_and_methods.html)'ı objelere çalıştırarak (yada mesaj göndererek) programlarsınız:
+* Objeler için [methodlar](../syntax_and_semantics/classes_and_methods.html)'ı çağırarak (yada mesaj göndererek) programlarsınız:
 
     ```ruby
     HTTP::Server.new(8080) ...
