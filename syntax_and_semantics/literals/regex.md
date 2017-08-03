@@ -16,7 +16,7 @@ Aşağıdaki düzenleyiciler de eklenebilir:
 * m: çok satırlı(multiline) (PCRE_MULTILINE)
 * x: genişletilmiş(extended) (PCRE_EXTENDED)
 
-For example
+Örneğin
 
 ```crystal
 r = /foo/imx
