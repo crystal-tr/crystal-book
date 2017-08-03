@@ -6,4 +6,4 @@
 puts "Hello world!"
 ```
 
-Buradan ana şablonun programın kendisi olduğunu görebilirsiniz: "main" bir işlevi veya benzeri bir şeyi tanımlamaya gerek yoktur.
+Buradan ana şablonun programın kendisi olduğunu görebilirsiniz: Bir "main" işlevi veya benzeri bir şeyi tanımlamaya gerek yoktur.
