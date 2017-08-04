@@ -58,7 +58,7 @@ proc.call(1, 2) #=> 3
 
 ## Metotlardan
 
-Var olan metotlardan bir proc yaratılabilir.
+Var olan metotlardan bir proc oluşturulabilir.
 
 ```crystal
 def one

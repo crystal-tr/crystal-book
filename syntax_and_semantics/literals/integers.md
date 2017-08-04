@@ -34,19 +34,19 @@ Bazı sayıları daha okunabilir hale getirmek için alt çizgiler kullanılabil
 1_000_000 # 1000000'den daha iyi
 ```
 
-Binary(ikili) sayılar `0b` ile başlar:
+İkili(binary) sayılar `0b` ile başlar:
 
 ```crystal
 0b1101 # == 13
 ```
 
-Octal(sekizli) sayılar `0o` ile başlar:
+Sekizli(octal) sayılar `0o` ile başlar:
 
 ```crystal
 0o123 # == 83
 ```
 
-Hexadecimal(onaltılı) sayılar `0x` ile başlar:
+Onaltılık(hexadecimal) sayılar `0x` ile başlar:
 
 ```crystal
 0xFE012D # == 16646445
