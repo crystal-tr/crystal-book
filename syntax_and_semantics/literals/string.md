@@ -96,7 +96,7 @@ String oluşturmak için ayrıca "heredoc" da kullanabilirsiniz:
 XML
 ```
 
-Bir heredoc `<<-IDENT` ile başlar, `IDENT`, harfle başlamak zorunluluğu olan harflerden ve sayılardan oluşan bir dizi ve belirteçtir. Bu heredoc `IDENT` ile başlayan bir satırla biter, önce gelen beyaz boşlukları yoksayar ve ignoring leading whitespace ve ister yeni bir satır, ister alfanümerik olmayan bir karakter ardından gelebilir:
+Bir heredoc `<<-IDENT` ile başlar, `IDENT` harfle başlama zorunluluğu olan harflerden ve sayılardan oluşan bir dizi ve belirteçtir. Bu heredoc `IDENT` ile başlayan bir satırla biter, baştaki beyaz boşlukları yoksayar ve ardından yeni bir satır veya alfanümerik olmayan bir karakter gelebilir:
 
 Sondaki nokta, heredoc'larda yöntem çağırmayı veya parantez içinde kullanmayı mümkün kılar:
 
@@ -114,7 +114,7 @@ upcase(<<-SOME
   SOME) # => "HELLO"
 ```
 
-Öndeki beyaz boşluk, sondaki `IDENT`'teki beyaz boşluk sayısına göre  heredocun içeriğinden kaldırılır. Örneğin:
+Öndeki beyaz boşluk, sondaki `IDENT`'teki beyaz boşluk sayısına göre heredocun içeriğinden kaldırılır. Örneğin:
 
 ```crystal
 # Same as "Hello\n  world"
@@ -142,7 +142,7 @@ b = 2
 
 `#{...}` ile kapatılmış her ifadede `Object#to_s(IO)` çalıştırılmış olur.
 
-##  Ara değerleme(interpolation) veya kaçışlar(escape) olmadan
+## Ara değerleme(interpolation) veya kaçışlar(escape) olmadan
 
 Ara değerleme veya kaçış olmadan string oluşturmak için `%q` kullanılır:
 
@@ -152,7 +152,7 @@ Ara değerleme veya kaçış olmadan string oluşturmak için `%q` kullanılır:
 
 `%q(...)` için `{}`, `[]` ve `<>` sınır belirleyici olabilir.
 
-Aynı özellikler heredocda da mevcuttur ve basitçe herodoc sınır belirleyicisini aşağıdaki gibi tek tırnak içine alarak kullanabiliriz.
+Aynı özellikler heredoc üzerinde de mevcuttur ve basitçe herodoc sınır belirleyicisini aşağıdaki gibi tek tırnak içine alarak kullanabiliriz.
 
 ```crystal
 <<-'HERE'
