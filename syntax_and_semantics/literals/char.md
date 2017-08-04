@@ -27,13 +27,13 @@ Bazı özel karakterleri belirtmek için ters eğik çizgi(`\`) kullanabilirsini
 ```
 
 
-Yazılmış bir unicode kod noktasını belirtmek için bir ters eğik çizgi ile ardından bir *u* ve dört onaltılık karakter kullanabilirsiniz:
+Yazılmış bir unicode kod noktasını belirtmek için bir ters eğik çizgi ile ardından bir *u* ve dört onaltılık(hexadecimal) karakter kullanabilirsiniz:
 
 ```crystal
 '\u0041' # == 'A'
 ```
 
-Veya açıkça belirtmek için süslü parantez ile birlikte 6 onaltılık sayıya kadar kullanabilirsiniz (0'dan 10FFFF'e kadar):
+Veya açıkça belirtmek için süslü parantez ile birlikte 6 onaltılık(hexadecimal) sayıya kadar kullanabilirsiniz (0'dan 10FFFF'e kadar):
 
 ```crystal
 '\u{41}'    # == 'A'

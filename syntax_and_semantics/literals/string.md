@@ -1,42 +1,42 @@
 # String
 
-A [String](http://crystal-lang.org/api/String.html) represents an immutable sequence of UTF-8 characters.
+Bir [String](http://crystal-lang.org/api/String.html) değişmez bir UTF-8 karakterler dizisini temsil eder.
 
-A String is typically created with a string literal, enclosing UTF-8 characters in double quotes:
+Bir string genellikle string literali ve UTF-8 karakterlerinin çift tırnak içine alınmasıyla oluşturulur.
 
 ```crystal
 "hello world"
 ```
 
-A backslash can be used to denote various special characters inside the string:
+Ters eğik çizgi string içinde çeşitli özel karakterleri belirtmek için kullanılabilir:
 
 ```crystal
-"\"" # double quote
-"\\" # backslash
-"\e" # escape
-"\f" # form feed
-"\n" # newline
-"\r" # carriage return
-"\t" # tab
-"\v" # vertical tab
+"\"" # çift tırnak(double quote)
+"\\" # ters eğik çizgi(backslash)
+"\e" # kaçış(escape)
+"\f" # sayfa ilerletme(form feed)
+"\n" # yeni satır(newline)
+"\r" # satırbaşı(carriage return)
+"\t" # sekme(tab)
+"\v" # dikey sekme(vertical tab)
 ```
 
-You can use a backslash followed by at most three digits to denote a code point written in octal:
+Ters eğik çizgiden (`\`) sonra en çok üç haneli bir sekizlik(octal) yazılmış bir kod noktası belirtmek için kullanabilirsiniz:
 
 ```crystal
 "\101" # == "A"
 "\123" # == "S"
 "\12"  # == "\n"
-"\1"   # string with one character with code point 1
+"\1"   # kod noktası 1 olan bir karakterlik string
 ```
 
-You can use a backslash followed by an *u* and four hexadecimal characters to denote a unicode codepoint:
+Unicode kod noktasını belirtmek için bir ters eğik çizgi ile ardından bir *u* ve dört onaltılık(hexadecimal) karakter kullanabilirsiniz:
 
 ```crystal
 "\u0041" # == "A"
 ```
 
-Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):
+Veya açıkça belirtmek için süslü parantez ile birlikte 6 onaltılık(hexadecimal) sayıya kadar kullanabilirsiniz (0'dan 10FFFF'e kadar):
 
 ```crystal
 "\u{41}"    # == "A"
@@ -50,46 +50,43 @@ A string can span multiple lines:
       world" # same as "hello\n      world"
 ```
 
-Note that in the above example trailing and leading spaces, as well as newlines,
-end up in the resulting string. To avoid this, you can split a string into multiple lines
-by joining multiple literals with a backslash:
+Yukarıdaki örnekte olduğu gibi başta ve sonra bulunan boşlukların yanı sıra yeni satırlar da neticede yine string oluşturur. Bundan kaçınmak için stringi bir çok satıra parçalayabilir ve ters eğik çizgi ile birbiriyle birleştirebilirsiniz:
 
 ```crystal
 "hello " \
 "world, " \
-"no newlines" # same as "hello world, no newlines"
+"no newlines" # "hello world, no newlines" ile aynı
 ```
 
-Alternatively, a backlash followed by a newline can be inserted inside the string literal:
+Alternatif olarak, ters eğik çizgi ile string literalinin içine yeni bir satır eklenebilir:
 
 ```crystal
 "hello \
      world, \
-     no newlines" # same as "hello world, no newlines"
+     no newlines" # "hello world, no newlines" ile aynı
 ```
 
-In this case, leading whitespace is not included in the resulting string.
+Bu durumda, öndeki boşluk, sonuç stringinde bulunmaz.
 
-If you need to write a string that has many double quotes, parentheses, or similar
-characters, you can use alternative literals:
+Bir çok çift tırnak, parantez veya benzeri karakterler içeren bir string yazma gereksiniminiz var ise, alternatif literalleri aşağıdakiler gibi kullanabilirsiniz:
 
 ```crystal
-# Supports double quotes and nested parenthesis
-%(hello ("world")) # same as "hello (\"world\")"
+# Çift tırnakları ve iç içe parantezleri destekler 
+%(hello ("world")) # "hello (\"world\")" ile aynı
 
-# Supports double quotes and nested brackets
-%[hello ["world"]] # same as "hello [\"world\"]"
+# Çift tırnakları ve iç içe köşeli parantezleri destekler 
+%[hello ["world"]] # "hello [\"world\"]" ile aynı
 
-# Supports double quotes and nested curlies
-%{hello {"world"}} # same as "hello {\"world\"}"
+# Çift tırnakları ve iç içe süslü parantezleri destekler 
+%{hello {"world"}} # "hello {\"world\"}" ile aynı
 
-# Supports double quotes and nested angles
-%<hello <"world">> # same as "hello <\"world\">"
+# Çift tırnakları ve iç içe açılı parantezleri destekler 
+%<hello <"world">> # "hello <\"world\">" ile aynı
 ```
 
 ## Heredoc
 
-You can also use a "heredoc" to create strings:
+String oluşturmak için ayrıca "heredoc" da kullanabilirsiniz:
 
 ```crystal
 <<-XML
@@ -99,9 +96,9 @@ You can also use a "heredoc" to create strings:
 XML
 ```
 
-A "heredoc" starts with `<<-IDENT`, where `IDENT` is an identifier: a sequence of letters and numbers that must start with a letter. The "heredoc" finishes with a line that starts with `IDENT`, ignoring leading whitespace, and is either followed by a newline or by a non-alphanumeric character.
+Bir heredoc `<<-IDENT` ile başlar, `IDENT` harfle başlama zorunluluğu olan harflerden ve sayılardan oluşan bir dizi ve belirteçtir. Bu heredoc `IDENT` ile başlayan bir satırla biter, baştaki beyaz boşlukları yoksayar ve ardından yeni bir satır veya alfanümerik olmayan bir karakter gelebilir:
 
-The last point makes it possible to invoke methods on heredocs, or use them inside parentheses:
+Sondaki nokta, heredoc'larda yöntem çağırmayı veya parantez içinde kullanmayı mümkün kılar:
 
 ```crystal
 <<-SOME
@@ -117,7 +114,7 @@ upcase(<<-SOME
   SOME) # => "HELLO"
 ```
 
-Leading whitespace is removed from the heredoc contents according to the number of whitespace that this last `IDENT` has. For example:
+Öndeki beyaz boşluk, sondaki `IDENT`'teki beyaz boşluk sayısına göre heredocun içeriğinden kaldırılır. Örneğin:
 
 ```crystal
 # Same as "Hello\n  world"
@@ -133,9 +130,9 @@ Leading whitespace is removed from the heredoc contents according to the number 
   STRING
 ```
 
-## Interpolation
+## Ara Değerleme(Interpolation)
 
-To create a String with embedded expressions, you can use string interpolation:
+Gömülü ifadeli bir string oluşturmak için ara değerleme kullanabilirsiniz:
 
 ```crystal
 a = 1
@@ -143,19 +140,19 @@ b = 2
 "sum = #{a + b}"        # "sum = 3"
 ```
 
-This ends up invoking `Object#to_s(IO)` on each expression enclosed by `#{...}`.
+`#{...}` ile kapatılmış her ifadede `Object#to_s(IO)` çalıştırılmış olur.
 
-## Without interpolation nor escapes
+## Ara değerleme(interpolation) veya kaçışlar(escape) olmadan
 
-To create a String without interpolation nor escapes use `%q`:
+Ara değerleme veya kaçış olmadan string oluşturmak için `%q` kullanılır:
 
 ```crystal
 %q(hello \n #{world}) # => "hello \\n \#{world}"
 ```
 
-Delimiters for `%q(...)` can also be `{}`, `[]` and `<>`.
+`%q(...)` için `{}`, `[]` ve `<>` sınır belirleyici olabilir.
 
-Heredoc without interpolation nor escapes is also possible, simply enclose the heredoc delimiter in single quotes:
+Aynı özellikler heredoc üzerinde de mevcuttur ve basitçe herodoc sınır belirleyicisini aşağıdaki gibi tek tırnak içine alarak kullanabiliriz.
 
 ```crystal
 <<-'HERE'

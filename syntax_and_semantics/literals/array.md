@@ -18,7 +18,7 @@ Boş bir array oluştururken her zaman T'yi belirtmemiz gerekir::
 
 ## String Array'i
 
-String arrayleri özel bir sözdizimi kullanılarak yaratılabilir:
+String arrayleri özel bir sözdizimi kullanılarak oluşturulabilir:
 
 ```crystal
 %w(one two three) # ["one", "two", "three"]
@@ -26,7 +26,7 @@ String arrayleri özel bir sözdizimi kullanılarak yaratılabilir:
 
 ## Symbol Array'i
 
-Symbol arrayleri özel bir sözdizimi kullanılarak yaratılabilir:
+Symbol arrayleri özel bir sözdizimi kullanılarak oluşturulabilir:
 
 ```crystal
 %i(one two three) # [:one, :two, :three]
