@@ -1,64 +1,64 @@
-# Assignment
+# Değer Atama
 
-Assignment is done with the equals (`=`) character.
+Atama eşittir (`=`) karakteri ile yapılır.
 
 ```crystal
-# Assigns to a local variable
+# Lokal bir değişkene değer atama
 local = 1
 
-# Assigns to an instance variable
+# Anlık bir değişkene değer atama
 @instance = 2
 
-# Assigns to a class variable
+# Sınıf değişkenine değer atama
 @@class = 3
 ```
 
-Each of the above kinds of variables will be explained later on.
+Yukarıdaki değişkenlerin her biri daha sonra açıklanacaktır.
 
-Some syntax sugar that contains the `=` character is available:
+`=` Karakterini içeren bazı sözdizimi kolaylıkları(syntax sugar) aşağıdaki gibi mevcuttur:
 
 ```crystal
-local += 1  # same as: local = local + 1
+local += 1  # local = local + 1 ile aynı
 
-# The above is valid with these operators:
+# Yukarıdaki ifade aşağıdakilerle de geçerlidir:
 # +, -, *, /, %, |, &, ^, **, <<, >>
 
 local ||= 1 # same as: local || (local = 1)
 local &&= 1 # same as: local && (local = 1)
 ```
 
-A method invocation that ends with `=` has syntax sugar:
+`=` Ile biten bir metot çağrısı sözdizimi kolaylığına sahiptir:
 
 ```crystal
-# A setter
+# Bir belirleyici
 person.name=("John")
 
-# The above can be written as:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 person.name = "John"
 
-# An indexed assignment
+# Bir sıralı atama
 objects.[]=(2, 3)
 
-# The above can be written as:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 objects[2] = 3
 
-# Not assignment-related, but also syntax sugar:
+# Değer atama ile alakalı değil fakat bir söz dizimi kolaylığıdır:
 objects.[](2, 3)
 
-# The above can be written as:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 objects[2, 3]
 ```
 
-The `=` operator syntax sugar is also available to setters and indexers. Note that `||` and `&&` use the `[]?` method to check for key presence.
+`=` operatörü sözdizimi kolaylığı Belirleyiciler(setter) ve sıralayıcılar(indexer) için de kullanılabilir. Unutmayın ki `||` ve `&&` operatörleri tarafından `[]?` metodu kullanılarak anahtarın varlığı kontrol edilir.
 
 ```crystal
-person.age += 1        # same as: person.age = person.age + 1
+person.age += 1        # person.age = person.age + 1 ile aynı
 
-person.name ||= "John" # same as: person.name || (person.name = "John")
-person.name &&= "John" # same as: person.name && (person.name = "John")
+person.name ||= "John" # person.name || (person.name = "John") ile aynı
+person.name &&= "John" # person.name && (person.name = "John") ile aynı
 
-objects[1] += 2        # same as: objects[1] = objects[1] + 2
+objects[1] += 2        # objects[1] = objects[1] + 2 ile aynı
 
-objects[1] ||= 2       # same as: objects[1]? || (objects[1] = 2)
-objects[1] &&= 2       # same as: objects[1]? && (objects[1] = 2)
+objects[1] ||= 2       # objects[1]? || (objects[1] = 2) ile aynı
+objects[1] &&= 2       # objects[1]? && (objects[1] = 2) ile aynı
 ```
