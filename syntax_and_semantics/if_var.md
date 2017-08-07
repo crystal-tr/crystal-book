@@ -34,7 +34,7 @@ Burada, `&&` ifadesinin sağ tarafında da `a`'nın 'Nil` olamayacağı kesindir
 
 Bir değişkeni `then` bölümünün içinde tekrardan atamak, o değişkeni tabiki de atanan ifadenin tipine bağlı olarak değiştirecektir.
 
-Yukarıdaki mantık anlık ve sınıf değişkenleri için **çalışmaz** ve geçerli değildir:
+Yukarıdaki mantık örnek ve sınıf değişkenleri için **çalışmaz** ve geçerli değildir:
 
 ```crystal
 if @a
@@ -42,7 +42,7 @@ if @a
 end
 ```
 
-Çünkü herhangi bir metot çağrısı olanak dahilinde o anlık değişkeni etkileyebilir ve `nil` yapabilir. Başka bir neden de, koşulun denetlenmesinden sonra ayrı bir thread o anlık değişkenin değerini değiştirebilir.
+Çünkü herhangi bir metot çağrısı olanak dahilinde o örnek değişkeni etkileyebilir ve `nil` yapabilir. Başka bir neden de, koşulun denetlenmesinden sonra ayrı bir thread o örnek değişkenin değerini değiştirebilir.
 
 `@a` ile `nil` olmadığı koşullar harici bir şey yapabilmek için iki seçenek bulunmaktadır:
 
