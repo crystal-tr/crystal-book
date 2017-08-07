@@ -1,18 +1,18 @@
-# Multiple assignment
+# Çoklu değer atama
 
-You can declare/assign multiple variables at the same time by separating expressions with a comma (`,`):
+Aynı anda birden fazla çoklu tanımlama/atama'yı virgül (`,`) ile ifadeleri birbirinden ayırarak yapabilirsiniz.
 
 ```crystal
 name, age = "Crystal", 1
 
-# The above is the same as this:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 temp1 = "Crystal"
 temp2 = 1
 name  = temp1
 age   = temp2
 ```
 
-Note that because expressions are assigned to temporary variables it is possible to exchange variables’ contents in a single line:
+Unutmayın ki, ifadelerin geçici değişkenlere atanması nedeniyle değişkenlerin içeriğini tek bir satıra aktarmanız mümkündür:
 
 ```crystal
 a = 1
@@ -22,40 +22,40 @@ a #=> 2
 b #=> 1
 ```
 
-If the right-hand side contains just one expression, it is considered an indexed type and the following syntax sugar applies:
+Sağ taraftaki sadece bir ifade içeriyorsa, bir dizinli tip olarak kabul edilir ve aşağıdaki sözdizimi kolaylığını uygular:
 
 ```crystal
 name, age, source = "Crystal,1,github".split(",")
 
-# The above is the same as this:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 temp = "Crystal,1,github".split(",")
 name   = temp[0]
 age    = temp[1]
 source = temp[2]
 ```
 
-If the left-hand side contains just one variable, the right-hand side is considered an array:
+Sol tarafta sadece bir değişken varsa, sağ taraf bir array olarak değerlendirilir:
 
 ```crystal
 names = "John", "Peter", "Jack"
 
-# The above is the same as:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 names = ["John", "Peter", "Jack"]
 ```
 
-Multiple assignment is also available to methods that end with `=`:
+`=` Ile biten metotlar için de çoklu atama da mevcuttur:
 
 ```crystal
 person.name, person.age = "John", 32
 
-# Same as:
+# Yukarıdaki kullanım şu şekilde de yazılabilir:
 temp1 = "John"
 temp2 = 32
 person.name = temp1
 person.age = temp2
 ```
 
-And it is also available to indexers (`[]=`):
+Aynı zamanda sıralayıcılar için de mevcuttur (`[]=`):
 
 ```crystal
 objects[1], objects[2] = 3, 4

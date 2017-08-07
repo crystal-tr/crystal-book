@@ -1,14 +1,14 @@
-# As a suffix
+# Son ek olarak if
 
-An `if` can be written as an expression’s suffix:
+Bir `if` ifadesi son ek olarak da yazılabilir:
 
 ```crystal
 a = 2 if some_condition
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 if some_condition
   a = 2
 end
 ```
 
-This sometimes leads to code that is more natural to read.
+Bazen okunması daha doğal olan kodlara yol açar.

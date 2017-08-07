@@ -1,6 +1,6 @@
-# As an expression
+# İfade olarak if
 
-The value of an `if` is the value of the last expression found in each of its branches:
+Bir `if`'in değeri, her bir bölümünün içinde bulunan en son ifadenin değeridir.
 
 ```crystal
 a = if 2 > 1
@@ -11,27 +11,27 @@ a = if 2 > 1
 a #=> 3
 ```
 
-If an `if` branch is empty, or it’s missing, it’s considered as if it had `nil` in it:
+Eğer bir `if` bölümü boşsa veya eksikse içinde sanki `nil` varmış gibi hesaba katılır.
 
 ```crystal
 if 1 > 2
   3
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 if 1 > 2
   3
 else
   nil
 end
 
-# Another example:
+# Başka bir örnek:
 if 1 > 2
 else
   3
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 if 1 > 2
   nil
 else

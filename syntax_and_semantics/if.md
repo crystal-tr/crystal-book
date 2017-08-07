@@ -1,7 +1,6 @@
 # if
 
-An `if` evaluates the given branch if its condition is *truthy*. Otherwise, it
-evaluates the `else` branch if present.
+Bir `if` koşulunun *doğruluk* olması durumunda kendisine ayrılan bölümü hesaplar. Aksi takdirde, eğer bulunuyorsa `else` bölümünü hesaplar.
 
 ```crystal
 a = 1
@@ -19,23 +18,24 @@ end
 b #=> 20
 ```
 
-To write a chain of if-else-if you use `elsif`:
+If-else-if bağı yazmak isterseniz `elsif` kullanabilirsiniz:
 
 ```crystal
-if some_condition
-  do_something
-elsif some_other_condition
-  do_something_else
+if bir_koşul
+  bir_şey_yap
+elsif başka_bir_koşul
+  başka_bir_şey_yap
 else
-  do_that
+  bunu_yap
 end
 ```
 
-After an `if`, a variable’s type depends on the type of the expressions used in both branches.
+
+`If` den sonra, bir değişkenin tipi, her iki bölümde de kullanılan ifadelerin tipine bağlıdır.
 
 ```crystal
 a = 1
-if some_condition
+if bir_koşul
   a = "hello"
 else
   a = true
@@ -43,31 +43,32 @@ end
 # a : String | Bool
 
 b = 1
-if some_condition
+if bir_koşul
   b = "hello"
 end
 # b : Int32 | String
 
-if some_condition
+if bir_koşul
   c = 1
 else
   c = "hello"
 end
 # c : Int32 | String
 
-if some_condition
+if bir_koşul
   d = 1
 end
 # d : Int32 | Nil
 ```
 
-Note that if a variable is declared inside one of the branches but not in the other one, at the end of the `if` it will also contain the `Nil` type.
 
-Inside an `if`'s branch the type of a variable is the one it got assigned in that branch, or the one that it had before the branch if it was not reassigned:
+Unutmayın ki, eğer bir değişken bu bölümlerin birinde tanımlanır ve diğerinde tanımlanmaz ise, `if`'in sonunda o da `Nil` tipinde olur.
+
+Bir `if` bölümünün içinde bir değerin tipi, o bölümde atanmış veya yeniden atanmamışsa, bölümden önce sahip olduğu değişken tipidir:
 
 ```crystal
 a = 1
-if some_condition
+if bir_koşul
   a = "hello"
   # a : String
   a.size
@@ -75,12 +76,12 @@ end
 # a : String | Int32
 ```
 
-That is, a variable’s type is the type of the last expression(s) assigned to it.
+Diğer bir deyişle, bir değişkene ait tip, ona atanan son ifade(ler) tipini belirtir.
 
-If one of the branches never reaches past the end of an `if`, like in the case of a `return`, `next`, `break` or `raise`, that type is not considered at the end of the `if`:
+Eğer bölümderden biri `if`'in bölümünün bitimine asla ulaşamazsa, yani `return`,` next`, `break` veya `raise` varsa, oluşacak olan bu tip `if`'in bitiminde hesaba katılamaz:
 
 ```crystal
-if some_condition
+if bir_koşul
   e = 1
 else
   e = "hello"
