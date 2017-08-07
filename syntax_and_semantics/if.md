@@ -1,6 +1,6 @@
 # if
 
-Bir `if` koşulunun *doğruluk* olması durumunda kendisine ayrılan bölümü hesaplar. Aksi takdirde, eğer bunlunuyorsa `else` bölümünü hesaplar.
+Bir `if` koşulunun *doğruluk* olması durumunda kendisine ayrılan bölümü hesaplar. Aksi takdirde, eğer bulunuyorsa `else` bölümünü hesaplar.
 
 ```crystal
 a = 1
