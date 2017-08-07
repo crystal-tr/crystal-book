@@ -6,7 +6,7 @@ Atama eşittir (`=`) karakteri ile yapılır.
 # Lokal bir değişkene değer atama
 local = 1
 
-# Anlık bir değişkene değer atama
+# Örnek bir değişkene değer atama
 @instance = 2
 
 # Sınıf değişkenine değer atama
