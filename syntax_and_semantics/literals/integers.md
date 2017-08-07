@@ -4,7 +4,7 @@
 
 4 tip işaretsiz tamsayı tipi var: [UInt8](http://crystal-lang.org/api/UInt8.html), [UInt16](http://crystal-lang.org/api/UInt16.html), [UInt32](http://crystal-lang.org/api/UInt32.html) ve [UInt64](http://crystal-lang.org/api/UInt64.html). 
 
-Bir integer literali opsiyonel olarak `+` veya `-` işareti ile bunun ardından rakamlar veya altçizgilerden oluşan bir dizi, ardından opsiyonel olarak bir sonekten oluşabilir. Eğer bir sonek bulunmuyorsa, bu literalin tipi en az `Int32` ile sayının uyduğu aralıkta yani `Int64` ya da `UInt64` arasındadır:
+Bir integer literali opsiyonel olarak `+` veya `-` işareti ile bunun ardından rakamlar veya altçizgilerden oluşan bir dizi, ardından opsiyonel olarak bir son ekten oluşabilir. Eğer bir son ek bulunmuyorsa, bu literalin tipi en az `Int32` ile sayının uyduğu aralıkta yani `Int64` ya da `UInt64` arasındadır:
 
 ```crystal
 1      # Int32

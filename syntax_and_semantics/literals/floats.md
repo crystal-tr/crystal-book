@@ -3,7 +3,7 @@
 [Float32](http://crystal-lang.org/api/Float32.html) ve [Float64](http://crystal-lang.org/api/Float64.html) olmak üzere iki floating point(kayan noktalı sayı) tip vardır. Bunlar sırasıyla IEEE tarafından tanımlanmış [binary32](http://en.wikipedia.org/wiki/Single_precision_floating-point_format)
 ve [binary64](http://en.wikipedia.org/wiki/Double_precision_floating-point_format)'e denk gelir
 
-Bir floating point literali opsiyonel olarak `+` veya `-` işareti ile bunun ardından sayılar veya altçizgilerden oluşan bir dizi, ardından nokta, ardından sayılar veya altçizgiler, ardından opsiyonel üstel sonek ve ardından opsiyonel tip sonekinden oluşabilir. Eğer herhangi bir son ek bulunmuyorsa, bu literalin tipi `Float64`'tür.
+Bir floating point literali opsiyonel olarak `+` veya `-` işareti ile bunun ardından sayılar veya altçizgilerden oluşan bir dizi, ardından nokta, ardından sayılar veya altçizgiler, ardından opsiyonel üstel son ek ve ardından opsiyonel tip son ekinden oluşabilir. Eğer herhangi bir son ek bulunmuyorsa, bu literalin tipi `Float64`'tür.
 
 ```crystal
 1.0      # Float64

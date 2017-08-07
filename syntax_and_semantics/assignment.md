@@ -30,7 +30,7 @@ local &&= 1 # same as: local && (local = 1)
 `=` Ile biten bir metot çağrısı sözdizimi kolaylığına sahiptir:
 
 ```crystal
-# Bir belirleyici
+# Bir belirleyici(setter)
 person.name=("John")
 
 # Yukarıdaki kullanım şu şekilde de yazılabilir:

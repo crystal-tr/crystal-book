@@ -1,6 +1,6 @@
-# Union types
+# Birleşme(Union) tipleri
 
-The type of a variable or expression can consist of multiple types. This is called a union type. For example, when assigning to a same variable inside different [if](if.html) branches:
+Bir değişkenin veya ifadenin tipi, birden fazla tipten oluşabilir. Buna bir birleşme tipi denir. Örneğin, farklı [if] (if.html) dallarında aynı değişkene atandığında:
 
 ```crystal
 if 1 + 2 == 3
@@ -12,21 +12,21 @@ end
 a # : Int32 | String
 ```
 
-At the end of the if, `a` will have the `Int32 | String` type, read "the union of Int32 and String". This union type is created automatically by the compiler. At runtime, `a` will of course be of one type only. This can be seen by invoking the `class` method:
+`if`'in sonunda, `a` nın `Int32 | String` tipi, "Int32 ve String'in birleşimini" okuyun. Bu birleşme tipi otomatik olarak derleyici tarafından oluşturulur. Çalışma zamanında, `a` tabii ki yalnızca bir tip olacaktır. Bu durum `class` methodunun çağırılmasıyla görülebilir:
 
 ```crystal
 # The runtime type
 a.class # => Int32
 ```
 
-The compile-time type can be seen by using [typeof](typeof.html):
+Derleme zamanı tipi, [typeof](typeof.html) kullanılarak görülebilir:
 
 ```crystal
 # The compile-time type
 typeof(a) # => Int32 | String
 ```
 
-A union can consist of an arbitrary large number of types. When invoking a method on an expression whose type is a union type, all types in the union must respond to the method, otherwise a compile-time error is given. The type of the method call is the union type of the return types of those methods.
+Bir birleşme, çok sayıda birleşik tipten oluşabilir. Tipi birleşik bir ifade üzerinde bir metod çağrılırken, birleşikteki tüm tipler metoda cevap vermelidir aksi takdirde derleme zamanı hatası verilir. Metot çağrısı tipi, bu metotların geri dönüş tiplerinin birleşim tipidir.
 
 ```crystal
 # to_s is defined for Int32 and String, it returns String
@@ -35,7 +35,7 @@ a.to_s # => String
 a + 1 # Error, because String#+(Int32) isn't defined
 ```
 
-If necessary a variable can be defined as a union type at compile time
+Eğer gerekliyse bir değişken derleme zamanında birleşme tipinde tanımlanabilir.
 
 ```
 # set the compile-time type
@@ -43,15 +43,15 @@ a = 0.as(Int32|Nil|String)
 typeof(a) # => Int32 | Nil | String
 ```
 
-## Union types rules
+## Birleşme tipi kuralları
 
-In the general case, when two types `T1` and `T2` are combined, the result is a union `T1 | T2`. However, there are a few cases where the resulting type is a different type.
+Genel bir durumda, ne zaman iki tür 'T1' ve 'T2' birleştiğinde, sonuç bir birleşim olur 'T1 | T2`. Bununla birlikte, ortaya çıkan türün farklı olduğu birkaç durum vardır.
 
-### Union of classes and structs under the same hierarchy
+### Aynı hiyerarşi altındaki sınıfların ve yapıların birliği
 
-If `T1` and `T2` are under the same hierarchy, and their nearest common ancestor `Parent` is not `Reference`, `Struct`, `Int`, `Float` nor `Value`, the resulting type is `Parent+`. This is called a virtual type, which basically means the compiler will now see the type as being `Parent` or any of its subtypes.
+`T1` ve` T2` aynı hiyerarşinin altında ve en yakın ortak atası `Parent`,` Reference`, `Struct`,` Int`, `Float` ya da` Value` değilse, sonuç türü `Parent + `'dır. Buna sanal bir tür denir, bu da temelde derleyicinin tipini veya herhangi bir alt tipini  `Parent ` olarak göreceği anlamına gelir.
 
-For example:
+Örneğin:
 
 ```crystal
 class Foo
@@ -66,18 +66,18 @@ end
 bar = Bar.new
 baz = Baz.new
 
-# Here foo's type will be Bar | Baz,
-# but because both Bar and Baz inherit from Foo,
-# the resulting type is Foo+
+# burada foo'nun tipi Bar | Baz olacak,
+# çünkü Bar ve Baz'ın ikinsi de Foo'dan miras alır
+# sonuç tipi Foo+ olur.
 foo = rand < 0.5 ? bar : baz
 typeof(foo) # => Foo+
 ```
 
-### Union of tuples of the same size
+### Aynı boyuttaki tupleların birleşimi
 
-The union of two tuples of the same size results in a tuple type that has the union of the types in each position.
+Aynı boyuttaki iki tuple birleşimi, her konumda tiplerin birleşimini içeren bir tuple tipi ile sonuçlanır.
 
-For example:
+Örneğin:
 
 ```crystal
 t1 = {1, "hi"}   # Tuple(Int32, String)
@@ -87,11 +87,11 @@ t3 = rand < 0.5 ? t1 : t2
 typeof(t3) # Tuple(Int32 | Bool, String | Nil)
 ```
 
-### Union of named tuples with the same keys
+### Aynı anahtarlı iki named tupleın birleşimi
 
-The union of two named tuples with the same keys (regardless of their order) results in a named tuple type that has the union of the types in each key. The order of the keys will be the ones from the tuple on the left hand side.
+Aynı anahtarlarla (sıralarına bakılmaksızın) iki adlandırılmış tuple birleşimi, her anahtar tipinin birleşimini içeren adlandırılmış bir tuple tipini verir. Anahtarların sırası, sol taraftaki tuple olan sırayla olacaktır.
 
-For example:
+Örneğin:
 
 ```crystal
 t1 = {x: 1, y: "hi"}   # Tuple(x: Int32, y: String)
