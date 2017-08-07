@@ -11,7 +11,7 @@ a = if 2 > 1
 a #=> 3
 ```
 
-Eğer bir `if`'in bölümü boş ise veya kayıpsa içinde sanki `nil` varmış gibi hesaba katılır.
+Eğer bir `if` bölümü boşsa veya eksikse içinde sanki `nil` varmış gibi hesaba katılır.
 
 ```crystal
 if 1 > 2
