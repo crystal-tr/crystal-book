@@ -67,7 +67,7 @@ bar = Bar.new
 baz = Baz.new
 
 # burada foo'nun tipi Bar | Baz olacak,
-# çünkü Bar ve Baz'ın ikinsi de Foo'dan miras alır
+# çünkü Bar ve Baz'ın ikisi de Foo'dan miras alır
 # sonuç tipi Foo+ olur.
 foo = rand < 0.5 ? bar : baz
 typeof(foo) # => Foo+
