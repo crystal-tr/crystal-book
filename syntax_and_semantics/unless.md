@@ -1,21 +1,21 @@
 # unless
 
-An `unless` evaluates the then branch if its condition is *falsey*, and evaluates the `else branch`, if there’s any, otherwise. That is, it behaves in the opposite way of an `if`:
+Bir `unless`, `then` bölümünü koşulu *yanlışlık* ise hesaplar. Aksi takdirde,  eğer bulunuyorsa `else` bölümünü hesaplar. Yani `if`'in tersi şeklinde davranır:
 
 ```crystal
-unless some_condition
-  then_expression
+unless bir_koşul
+  then_ifadesi
 else
-  else_expression
+  else_ifadesi
 end
 
-# The above is the same as:
-if some_condition
-  else_expression
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
+if bir_koşul
+  else_ifadesi
 else
-  then_expression
+  then_ifadesi
 end
 
-# Can also be written as a suffix
+# Ayrıca son ek olarak da yazılabilir
 close_door unless door_closed?
 ```

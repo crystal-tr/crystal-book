@@ -1,24 +1,24 @@
 # while
 
-A `while` executes its body as long as its condition is *truthy*.
+Bir `while`, koşulunun *doğruluğu* sağlandığı sürece gövdesi(body) çalıştırılır.
 
 ```crystal
-while some_condition
-  do_this
+while bir_koşul
+  bunu_yap
 end
 ```
 
-The condition is first tested and, if *truthy*, the body is executed. That is, the body might never be executed.
+İlk olarak koşul kontrol edilir ve eğer *doğruysa*, gövdesi  çalıştırılır. Yani, gövdesi hiç çalıştırılamayabilir.
 
-A `while`'s type is always `Nil`.
+Bir `while`'ın tipi her zaman `Nil`'dir.
 
-Similar to an `if`, if a `while`'s condition is a variable, the variable is guaranteed to not be `nil` inside the body. If the condition is an `var.is_a?(Type)` test, `var` is guaranteed to be of type Type inside the body. And if the condition is a `var.responds_to?(:method)`, `var` is guaranteed to be of a type that responds to that method.
+`if`'e benzer bir şekilde, eğer bir `while`'ın koşulu bir değişkense, o değişken gövdenin içindeyken `nil` olamaz. Eğer koşul bir `var.is_a?(Type)` kontrolüyse, `var` gövdenin içinde is Type'ın tipinde olur. Eğer if koşul bir `var.responds_to?(:method)` kontrolü ise, `var` o metod'a yanıt veren tipte olur.
 
-The type of a variable after a `while` depends on the type it had before the `while` and the type it had before leaving the `while`'s body:
+`while`'dan sonraki bir değişkenin tipi, `while`'dan önceki sahip olduğu ve `while`'ın gövdesini terk etmeden önceki tipine bağlıdır:
 
 ```crystal
 a = 1
-while some_condition
+while bir_koşul
   # a : Int32 | String
   a = "hello"
   # a : String
@@ -27,22 +27,22 @@ end
 # a : Int32 | String
 ```
 
-## Checking the condition at the end of a loop
+## Bir döngünün sonunda durumun kontrol edilmesi
 
-If you need to execute the body at least once and then check for a breaking condition, you can do this:
+Eğer içerisini en az bir kere çalıştırıp sonra da döngüyü kıracak bir koşulla kontrolü sağlamak için aşağıdaki gibi kullanabilirsiniz:
 
 ```crystal
 while true
-  do_something
-  break if some_condition
+  bir_şey_yap
+  break if bir_koşul
 end
 ```
 
-Or use `loop`, found in the standard library:
+Veya standart kütüphanede bulunan `loop`'u kullanın:
 
 ```crystal
 loop do
-  do_something
-  break if some_condition
+  bir_şey_yap
+  break if bir_koşul
 end
 ```

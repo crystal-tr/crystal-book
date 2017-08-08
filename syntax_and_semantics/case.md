@@ -1,138 +1,138 @@
 # case
 
-A `case` is a control expression which functions a bit like pattern matching. It allows writing a chain of if-else-if with a small change in semantic and some more powerful constructs.
+Bir 'case', patern eşleştirmesi benzeri bir işlev gören bir denetim ifadesidir. If-else-if zincirinin semantik olarak küçük bir değişiklikle ve daha güçlü bazı yapılarla yazılmasına izin verir.
 
-In its basic form, it allows matching a value against other values:
+Temel formunda bir değeri diğer değerlerle eşleştirmeye izin verir:
 
 ```crystal
 case exp
 when value1, value2
-  do_something
+  bir_şey_yap
 when value3
-  do_something_else
+  başka_bir_şey_yap
 else
-  do_another_thing
+  başka_bir_şey_daha_yap
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 tmp = exp
 if value1 === tmp || value2 === tmp
-  do_something
+  bir_şey_yap
 elsif value3 === tmp
-  do_something_else
+  başka_bir_şey_yap
 else
-  do_another_thing
+  başka_bir_şey_daha_yap
 end
 ```
 
-For comparing an expression against a `case`'s value the *case equality operator* `===` is used. It is defined as a method on [`Object`](https://crystal-lang.org/api/Object.html#%3D%3D%3D%28other%29-instance-method) and can be overriden by subclasses to provide meaningful semantics in case statements. For example, [`Class`](https://crystal-lang.org/api/Class.html#%3D%3D%3D%28other%29-instance-method) defines case equality as when an object is an instance of that class, [`Regex`](https://crystal-lang.org/api/Regex.html#%3D%3D%3D%28other%3AString%29-instance-method) as when the value matches the regular expression and [`Range`](https://crystal-lang.org/api/Range.html#%3D%3D%3D%28value%29-instance-method) as when the value is included in that range.
+Bir `case` değerini başka bir ifade ile karşılaştırmak için *case eşitlik operatörü* `===` kullanılır. Bir metod olarak [`Nesne`](https://crystal-lang.org/api/Object.html#%3D%3D%3D%28other%29-instance-method) üzerinde tanımlanmıştır ve `case` ifadelerinde anlamlı semantikler sağlamak için alt sınıflar tarafından üzerine yazılabilir. Örneğin, [`Sınıf`](https://crystal-lang.org/api/Class.html#%3D%3D%3D%28other%29-instance-method) `case` eşitliğini, bir nesne o sınıfın bir örneği(instance) olduğundaki gibi tanımlar, [`Düzenli İfadeler`](https://crystal-lang.org/api/Regex.html#%3D%3D%3D%28other%3AString%29-instance-method) değer düzenli ifade ile eşleştiği zamandaki gibi ve [`Aralık`](https://crystal-lang.org/api/Range.html#%3D%3D%3D%28value%29-instance-method) değer o aralıkta olduğundaki gibi.
 
-If a `when`'s expression is a type, `is_a?` is used. Additionally, if the case expression is a variable or a variable assignment the type of the variable is restricted:
+Bir `when` ifadesi bir tip ise,`is_a?` kullanılır. Ayrıca, case ifadesi değişken veya değişken atama ise, değişkenin tipi kısıtlanır:
 
 ```crystal
 case var
 when String
   # var : String
-  do_something
+  bir_şey_yap
 when Int32
   # var : Int32
-  do_something_else
+  başka_bir_şey_yap
 else
-  # here var is neither a String nor an Int32
-  do_another_thing
+  # burada var String de değil, Int32 de değil
+  başka_bir_şey_daha_yap
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 if var.is_a?(String)
   do_something
 elsif var.is_a?(Int32)
-  do_something_else
+  başka_bir_şey_yap
 else
-  do_another_thing
+  başka_bir_şey_daha_yap
 end
 ```
 
-You can invoke a method on the `case`'s expression in a `when` by using the implicit-object syntax:
+Örtülü nesne söz dizimini(implicit-object syntax) kullanarak bir `case` ifadesinde bulunan `when`'in içinde metod çağırabilirsiniz:
 
 ```crystal
 case num
 when .even?
-  do_something
+  bir_şey_yap
 when .odd?
-  do_something_else
+  başka_bir_şey_yap
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 tmp = num
 if tmp.even?
-  do_something
+  bir_şey_yap
 elsif tmp.odd?
-  do_something_else
+  başka_bir_şey_yap
 end
 ```
 
-Finally, you can omit the `case`'s value:
+Sonunda, `case`'in değerini atlayabilirsiniz:
 
 ```crystal
 case
 when cond1, cond2
-  do_something
+  bir_şey_yap
 when cond3
-  do_something_else
+  başka_bir_şey_yap
 end
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 if cond1 || cond2
-  do_something
+  bir_şey_yap
 elsif cond3
-  do_something_else
+  başka_bir_şey_yap
 end
 ```
 
-This sometimes leads to code that is more natural to read.
+Bazen okunması daha doğal olan kodlara yol açar.
 
 ## Tuple literal
 
-When a case expression is a tuple literal there are a few semantic differences if a when condition is also a tuple literal.
+Hem case ifadesinin bir tuple literali, hem de when koşulunun bir tuple literali olması durumunda, birkaç semantik farklılık vardır.
 
-### Tuple size must match
+### Tuple boyutu eşleşmeli
 
 ```crystal
 case {value1, value2}
-when {0, 0} # OK, 2 elements
+when {0, 0} # 2 elemanlı olduğu için hata yok
   # ...
-when {1, 2, 3} # Compiler error, because it will never match
+when {1, 2, 3} # Derleme hatası, çünkü asla eşlenemez
   # ...
 end
 ```
 
-### Underscore allowed
+### Altçizgi(_) kullanılabilir
 
 ```crystal
 case {value1, value2}
 when {0, _}
-  # Matches if 0 === value1, no test done against value2
+  # eğer 0 === value1 ise eşlenir, value2 için bir kontrol yapılmaz
 when {_, 0}
-  # Matches if 0 === value2, no test done against value1
+  # eğer 0 === value2 ise eşlenir, value1 için bir kontrol yapılmaz
 end
 ```
 
-### Implicit-object allowed
+### Örtülü nesne(Implicit-object) kullanılabilir
 
 ```crystal
 case {value1, value2}
 when {.even?, .odd?}
-  # Matches if value1.even? && value2.odd?
+  # Eğer value1.even? && value2.odd? ise eşlenir
 end
 ```
 
-### Comparing against a type will perform an is_a? check
+### Bir tipe karşı karşılaştırmak, is_a? kontrolünü çalıştıracak
 
 ```crystal
 case {value1, value2}
 when {String, Int32}
-  # Matches if value1.is_a?(String) && value2.is_a?(Int32)
-  # The type of value1 is known to be a String by the compiler,
-  # and the type of value2 is known to be an Int32
+  # eğer value1.is_a?(String) && value2.is_a?(Int32) ise eşler
+  # value1'in tipi derleyici tarafından String
+  # ve value2'nin tipi Int32 olarak biliniyor
 end
 ```
