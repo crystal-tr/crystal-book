@@ -1,6 +1,6 @@
-# Range
+# Aralık(range)
 
-Bir [Range](http://crystal-lang.org/api/Range.html) genellikle range literali kullanılarak oluşturulur:
+Bir [Aralık](http://crystal-lang.org/api/Range.html) genellikle range literali kullanılarak oluşturulur:
 
 ```crystal
 x..y  # matematikte kullanılan kapsayan bir range: [x, y]

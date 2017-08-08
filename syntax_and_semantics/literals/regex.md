@@ -1,4 +1,4 @@
-# Regex
+# Düzenli İfadeler(Regex)
 
 Düzenli ifadeler genellikle bir literal ile oluşturulmuş [Regex](http://crystal-lang.org/api/Regex.html) sınıfıyla temsil edilir:
 

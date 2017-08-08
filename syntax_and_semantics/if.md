@@ -30,7 +30,6 @@ else
 end
 ```
 
-
 `If` den sonra, bir değişkenin tipi, her iki bölümde de kullanılan ifadelerin tipine bağlıdır.
 
 ```crystal
@@ -60,7 +59,6 @@ if bir_koşul
 end
 # d : Int32 | Nil
 ```
-
 
 Unutmayın ki, eğer bir değişken bu bölümlerin birinde tanımlanır ve diğerinde tanımlanmaz ise, `if`'in sonunda o da `Nil` tipinde olur.
 
