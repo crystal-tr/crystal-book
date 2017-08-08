@@ -78,7 +78,7 @@ end
 
 Diğer bir deyişle, bir değişkene ait tip, ona atanan son ifade(ler) tipini belirtir.
 
-Eğer bölümderden biri `if`'in bölümünün bitimine asla ulaşamazsa, yani `return`,` next`, `break` veya `raise` varsa, oluşacak olan bu tip `if`'in bitiminde hesaba katılamaz:
+Eğer bölümlerden biri `if` bölümünün bitimine asla ulaşamazsa, yani `return`,`next`, `break` veya `raise` varsa, oluşacak olan bu tip `if`'in bitiminde hesaba katılamaz:
 
 ```crystal
 if bir_koşul

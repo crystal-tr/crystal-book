@@ -3,10 +3,10 @@
 Bir `if` ifadesi son ek olarak da yazılabilir:
 
 ```crystal
-a = 2 if some_condition
+a = 2 if bir_koşul
 
 # Yukarıdaki ifade aşağıdakine eşdeğerdir:
-if some_condition
+if bir_koşul
   a = 2
 end
 ```

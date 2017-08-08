@@ -1,11 +1,11 @@
-# Değişkenli if
+# Değişkenli(Var) if
 
 Eğer bir değişken bir `if`'in koşulu ise, `then` bölümünün içinde `Nil` tipi
 yokmuş gibi hesaba katılır.
 
 ```crystal
 a = bir_koşul ? nil : 3
-# a is Int32 or Nil
+# a Int32 veya Nil
 
 if a
   # Eğer a doğruluk ise bu bölüme geçebilir,
@@ -17,16 +17,16 @@ end
 Bu, bir `if` ifadesinin koşulunda bir değişken atandığında da geçerlidir:
 
 ```crystal
-if a = some_expression
-  # here a is not nil
+if a = bir_ifade
+  # a burada nil değildir.
 end
 ```
 
-Bu mantık, koşulda ve'ler (`&&`) varsa da geçerlidir:
+Bu mantık, koşulda ve(`&&`) varsa da geçerlidir:
 
 ```crystal
 if a && b
-  # bu bölümde hem a hem b için Nil olamayacakları kesindir
+  # bu bölümde hem a hem b için Nil olamayacakları kesindir.
 end
 ```
 
@@ -42,7 +42,7 @@ if @a
 end
 ```
 
-Çünkü herhangi bir metot çağrısı olanak dahilinde o örnek değişkeni etkileyebilir ve `nil` yapabilir. Başka bir neden de, koşulun denetlenmesinden sonra ayrı bir thread o örnek değişkenin değerini değiştirebilir.
+Çünkü herhangi bir metot çağrısı, olanak dahilinde o örnek değişkeni etkileyebilir ve `nil` yapabilir. Başka bir nedenle, koşulun denetlenmesinden sonra ayrı bir thread o örnek değişkenin değerini değiştirebilir.
 
 `@a` ile `nil` olmadığı koşullar harici bir şey yapabilmek için iki seçenek bulunmaktadır:
 
@@ -52,13 +52,13 @@ if a = @a
   # burada a nil olamaz
 end
 
-# İkincisi: standart kütüphanede bulunan `Object#try` kullanımı
+# İkincisi: standart kütüphanede bulunan `Object#try` kullanmak
 @a.try do |a|
   # burada a nil olamaz
 end
 ```
 
-Bu mantık, getiriciler(getter) ve özellikler de dahil olmak üzere proc ve metot çağrılarıyla çalışmaz. Çünkü nil olabilen (veya daha genel olarak, bir birleşim tipinde olan) proclar ve metodların, iki ardışık çağrıdan aynı ve daha spesifik tipi döndürmesi garanti edilemez.
+Bu mantık, getiriciler(getter) ve özellikler(property) de dahil olmak üzere proc ve metot çağrılarıyla çalışmaz. Çünkü nil olabilen (veya daha genel olarak, bir birleşim tipinde olan) proclar ve metodların, iki ardışık çağrıdan aynı ve daha spesifik tipi döndürmesi garanti edilemez.
 
 ```crystal
 if metot # ilk olarak Int32 or Nil dönebilen metodu çağır

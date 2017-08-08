@@ -1,41 +1,41 @@
 # if var.responds_to?(...)
 
-If an `if`'s condition is a `responds_to?` test, in the `then` branch the type of a variable is guaranteed to be restricted to the types that respond to that method:
+Bir `if` koşulu bir `respond_to?` kontrolüyse, `then` bölümünde o metoda yanıt veren tipler tarafından değişkenin tipi kısıtlanır:
 
 ```crystal
 if a.responds_to?(:abs)
-  # here a's type will be reduced to those responding to the 'abs' method
+  # a 'nın tipi 'abs' metoduna yanıt verenlere düşürülür
 end
 ```
 
-Additionally, in the `else` branch the type of the variable is guaranteed to be restricted to the types that don’t respond to that method:
+Ayrıca, `else` bölümünde o metoda yanıt vermeyen tipler tarafından değişkenin tipi kısıtlanamaz.
 
 ```crystal
-a = some_condition ? 1 : "hello"
+a = bir_koşul ? 1 : "hello"
 # a : Int32 | String
 
 if a.responds_to?(:abs)
-  # here a will be Int32, since Int32#abs exists but String#abs doesn't
+  # burada a Int32, çünkü Int32#abs bulunuyor fakat String#abs bulunmuyor
 else
-  # here a will be String
+  # burada a String 
 end
 ```
 
-The above **doesn’t** work with instance variables or class variables. To work with these, first assign them to a variable:
+Yukarıdaki ifade örnek ve sınıf değişkenleriyle **çalışmaz**. Bunlarla çalıştırmak için ilk önce bir değişkene atanması gereklidir.
 
 ```crystal
 if @a.responds_to?(:abs)
-  # here @a is not guaranteed to respond to `abs`
+  # @a 'nın String olması kesin değildir
 end
 
 a = @a
 if a.responds_to?(:abs)
-  # here a is guaranteed to respond to `abs`
+  # a 'nın `abs`'ye cevap vereceği kesindir
 end
 
-# A bit shorter:
+# Biraz daha kısası:
 if (a = @a).responds_to?(:abs)
-  # here a is guaranteed to respond to `abs`
+  # a 'nın `abs`'ye cevap vereceği kesindir
 end
 ```
 
