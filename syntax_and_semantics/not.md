@@ -1,6 +1,6 @@
 # if !
 
-The `!` operatörü, bir değerin [doğruluğunun](truthy_and_falsey_values.html) olumsuzunu alarak bir `Bool` döner.
+`!` operatörü, bir değerin [doğruluğunun](truthy_and_falsey_values.html) olumsuzunu alarak bir `Bool` döner.
 
 Bir `if`'de bir değişken ile birlikte `is_a?`, `respond_to?` veya `nil?` beraber kullanıldığı zaman, derleyici, tipleri buna göre kısıtlar:
 
