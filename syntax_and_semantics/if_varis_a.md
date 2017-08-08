@@ -1,21 +1,21 @@
 # if var.is_a?(...)
 
-If an `if`'s condition is an `is_a?` test, the type of a variable is guaranteed to be restricted by that type in the `then` branch.
+Eğer bir `if` koşulu `is_a?` kontrolüyse, `then` bölümündeki tip tarafından değişkenin tipi kısıtlanır:
 
 ```crystal
 if a.is_a?(String)
-  # here a is a String
+  # burada a String
 end
 
 if b.is_a?(Number)
-  # here b is a Number
+  # burada b Number
 end
 ```
 
-Additionally, in the `else` branch the type of the variable is guaranteed to not be restricted by that type:
+Ayrıca, `else` bölümündeki tip tarafından değişkenin tipi kısıtlanamaz.
 
 ```crystal
-a = some_condition ? 1 : "hello"
+a = bir_koşul ? 1 : "hello"
 # a : Int32 | String
 
 if a.is_a?(Number)
@@ -25,30 +25,30 @@ else
 end
 ```
 
-Note that you can use any type as an `is_a?` test, like abstract classes and modules.
+Unutmayın ki, `is_a?` kontrolünü tıpkı soyut sınıflar(abstract class) veya modüller gibi herhangi bir tip için kullanabilirsiniz.
 
-The above also works if there are ands (`&&`) in the condition:
+Eğer koşulda ve(`&&`) bulunuyorsa bile yukarıdaki şekilde çalıştırılabilir:
 
 ```crystal
 if a.is_a?(String) && b.is_a?(Number)
-  # here a is a String and b is a Number
+  # Burada a String ve b Number
 end
 ```
 
-The above **doesn’t** work with instance variables or class variables. To work with these, first assign them to a variable:
+Yukarıdaki ifade örnek ve sınıf değişkenleriyle **çalışmaz**. Bunlarla çalıştırmak için ilk önce bir değişkene atanması gereklidir.
 
 ```crystal
 if @a.is_a?(String)
-  # here @a is not guaranteed to be a String
+  # @a 'nın String olması kesin değildir
 end
 
 a = @a
 if a.is_a?(String)
-  # here a is guaranteed to be a String
+  # a 'nın String olması kesindir
 end
 
-# A bit shorter:
+# Biraz daha kısası:
 if (a = @a).is_a?(String)
-  # here a is guaranteed to be a String
+  # a 'nın String olması kesindir
 end
 ```
