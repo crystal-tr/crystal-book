@@ -52,7 +52,7 @@ else
 end
 ```
 
-Örtülü nesne söz dizimini(implicit-object syntax) kullanarak bir `case` ifadesinde bulunan `when`'in içinde metod çağırabilirsiniz:
+Örtülü nesne sözdizimini(implicit-object syntax) kullanarak bir `case` ifadesinde bulunan `when`'in içinde metod çağırabilirsiniz:
 
 ```crystal
 case num

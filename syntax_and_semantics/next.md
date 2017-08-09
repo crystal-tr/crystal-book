@@ -1,6 +1,6 @@
 # next
 
-You can use `next` to try to execute the next iteration of a `while` loop. After executing `next`, the `while`'s condition is checked and, if *truthy*, the body will be executed.
+Bir `while` döngüsünün bir sonraki tekrarını yürütebilmesi için `next`'i kullanabilirsiniz. `next` çalıştıktan sonra, `while`'ın koşulu kontrol edilir ve eğer *doğruluk* ise, gövdesi çalıştırılır.
 
 ```crystal
 a = 1

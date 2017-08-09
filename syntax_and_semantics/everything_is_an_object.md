@@ -1,10 +1,10 @@
-# Everything is an object
+# Her şey bir nesne
 
-In Crystal everything is an object. The definition of an object boils down to these points:
+Crystal'da her şey bir nesnedir. Bir nesnenin tanımı şu noktalarla özetlenebilir:
 
-* It has a type
-* It can respond to some methods
+* Bir tipe sahip
+* Bazı metodlara cevap verebilir
 
-This is everything you can know about an object: its type and whether it responds to some method.
+Bir nesne hakkında bildiğiniz her şey budur: tipi ve bazı metodlara cevap verip vermediği.
 
-An object's internal state, if any, can only be queried by invoking methods.
+Bir nesnenin iç durumu, varsa, yalnızca metod çağırarak sorgulanabilir.
