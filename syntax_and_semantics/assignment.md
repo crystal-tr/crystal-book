@@ -42,7 +42,7 @@ objects.[]=(2, 3)
 # Yukarıdaki kullanım şu şekilde de yazılabilir:
 objects[2] = 3
 
-# Değer atama ile alakalı değil fakat bir söz dizimi kolaylığıdır:
+# Değer atama ile alakalı değil fakat bir sözdizimi kolaylığıdır:
 objects.[](2, 3)
 
 # Yukarıdaki kullanım şu şekilde de yazılabilir:

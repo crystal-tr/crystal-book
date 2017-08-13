@@ -1,13 +1,14 @@
-# && - Logical AND Operator
+# && - Mantıksal AND Operatörü
 
-An `&&` (and) evaluates its left hand side. If it's *truthy*, it evaluates its right hand side and has that value. Otherwise it has the value of the left hand side. Its type is the union of the types of both sides.
+Bir `&&`(ve) sol tarafını değerlendirir. Eğer *doğruluksa*, sağ tarafını değerlendirir ve bu değeri alır. Aksi halde sol tarafın değerini alır. Tipi her iki tarafın da birleşimidir.
 
-You can think an `&&` as syntax sugar of an `if`:
+Bir `&&`'i `if` ifadesi için sözdizimi kolaylığı olarak düşünebilirsiniz:
+
 
 ```crystal
 some_exp1 && some_exp2
 
-# The above is the same as:
+# Yukarıdaki ifade aşağıdakine eşdeğerdir:
 tmp = some_exp1
 if tmp
   some_exp2
