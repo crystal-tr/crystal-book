@@ -34,7 +34,7 @@ Symbol arrayleri özel bir sözdizimi kullanılarak oluşturulabilir:
 
 ## Array benzeri tipler
 
-Argümansız `new` metodu tanımlayıp, `<<` metodu ile diğer tiplerle de özel bir array literal sözdizimi, kullanabilirsiniz.
+Argüman almayan bir `new` metodu tanımlayıp, `<<` metodu ile diğer tiplerle de özel bir array literal sözdizimi, kullanabilirsiniz.
 
 ```crystal
 MyType{1, 2, 3}

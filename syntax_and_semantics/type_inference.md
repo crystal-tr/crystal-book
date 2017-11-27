@@ -1,8 +1,8 @@
-# Type inference
+# Tip çıkarımı
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotations are required.
+Crystal'in felsefesi, mümkün olduğunca az sayıda tip notasyonu yapmaktır. Bununla birlikte, bazen tip notasyonları gereklidir.
 
-Consider a class definition like this:
+Böyle bir sınıf tanımı düşünün:
 
 ```crystal
 class Person
@@ -11,21 +11,21 @@ class Person
   end
 end
 ```
+Kolayca `@age`'in bir tamsayı olduğunu görebiliriz, ancak` @name`'in tipinin ne olduğunu bilmiyoruz. Derleyici, onun tipini 'Person' sınıfının tüm kullanımlarından çıkarabilir. Bununla birlikte, bunu yaparken birkaç sorun ile karşılaşabiliriz:
 
-We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
+* Kodu okuyan birisi için tip açık değildir ve okuyan kişi bunu bulmak için bütün "Person" kullanımlarını da kontrol etmesi gerekir.
 
-* The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
-* Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are nearly impossible to do.
+* Bir metodu yalnızca bir kez analiz etmek zorunda kalmak gibi bazı derleyici optimizasyonlarının yapılması neredeyse imkansızdır.
 
-As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
+Bir kod tabanı büyüdükçe, bu konular daha fazla önem kazanır: Bir projeyi anlamanız zorlaşır ve derleme zamanları katlanılmaz hale gelir.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance and [class](class_variables.html) variables.
+Bu nedenle, Crystal, açık bir şekilde(bir insanın anlayabileceği kadar açık) örnek ve [sınıf](class_variables.html) değişkenlerinin tiplerini bilmelidir.
 
-There are several ways to let Crystal know this.
+Crystal'ın bunu bilmesinin birkaç yolu vardır.
 
-## Use an explicit type annotation
+## Açık bir tip notasyonu kullanın
 
-The easiest, but probably most tedious, way is to use explicit type annotations.
+En kolay, ancak muhtemelen en sıkıcı yolu, açık açıklama ek açıklamalar kullanmaktır.
 
 ```crystal
 class Person
@@ -38,21 +38,21 @@ class Person
 end
 ```
 
-## Don't use an explicit type annotation
+## Açık bir tip notasyonu kullanmayın
 
-If you omit an explicit type annotation the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
+Açık bir tip notasyonunu atlarsanız, derleyici bir dizi sözdizimsel kurallar kullanarak örnek ve sınıf değişkenlerini türetmeye çalışacaktır.
 
-For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
+Verilen bir örnek/sınıf değişkeni için, bir kural uygulanabilir ve bir tip tahmin edilebilir olduğunda, tip bir gruba eklenir. Başka hiçbir kural uygulanamadığında, çıkarım yapılan tipi bu tiplerin [birleşimi(union)] (union_types.html) olacaktır. Ayrıca, derleyici, bir örnek değişkeni her zaman başlatılamadığını bildirirse, [Nil] (literal / nil.html) tipini de içerecektir.
 
-The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type annotation.
+Kurallar çoktur, ancak genellikle ilk üçü en çok kullanılır. Ayrıca hepsini hatırlamaya hiç gerek yok. Derleyici, bir örnek değişkeni türünün çıkarılmadığını söyleyen bir hata verirse, her zaman açık bir tip notasyonu ekleyebilirsiniz.
 
-The following rules only mention instance variables, but they apply to class variables as well. They are:
+Aşağıdaki kurallar yalnızca örnek değişkenlerden bahsetmekle birlikte, sınıf değişkenleri için de geçerlidir. Onlar:
 
-### 1. Assigning a literal value
+### 1.Gerçek değer atama
 
-When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.html) have an associated type.
+Bir örnek değişkene bir değişmez tayin edildiğinde, değişmezin türü kümeye eklenir. Tüm [literaller] (literals.html) ilişkili bir tipe sahiptir.
 
-In the following example, `@name` is inferred to be `String` and `@age` to be `Int32`.
+Aşağıdaki örnekte `@name`,`String` ve `@age` öğeleri `Int32` olarak çıkarımı yapılacaktır.
 
 ```crystal
 class Person
@@ -63,7 +63,7 @@ class Person
 end
 ```
 
-This rule, and every following rule, will also be applied in methods other than `initialize`. For example:
+Bu kural ve takip eden her kural, `initialize` da dahil olmak üzere her metod için uygulanacaktır. Örneğin:
 
 ```crystal
 class SomeObject
@@ -73,7 +73,7 @@ class SomeObject
 end
 ```
 
-In the above case, `@lucky_number` will be inferred to be `Int32 | Nil`: `Int32` because 42 was assigned to it, and `Nil` because it wasn't assigned in all of the class' initialize methods.
+Yukarıdaki durumda `@lucky_number`'ın `Int32 | Nil`: `Int32` olduğu varsayılacaktır, çünkü ona atanmış 42 ve `Nil`, çünkü sınıflarının hiçbirinde başlangıç metodunda atanmamıştı.
 
 ### 2. Assigning the result of invoking the class method `new`
 
