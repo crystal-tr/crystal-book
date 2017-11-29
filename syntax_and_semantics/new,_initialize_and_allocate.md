@@ -1,14 +1,14 @@
-# new, initialize and allocate
+# new, initialize ve allocate
 
-You create an instance of a class by invoking `new` on that class:
+Bir sınıfın bir örneğini, o sınıfa `new` metodunu çağırarak oluşturabilirsiniz:
 
 ```
 person = Person.new
 ```
 
-Here, `person` is an instance of `Person`.
+Burada `person`, `Person` sınıfının bir örneğidir.
 
-We can't do much with `person`, so let's add some concepts to it. A `Person` has a name and an age. In the "Everything is an object" section we said that an object has a type and responds to some methods, which is the only way to interact with objects, so we'll need both `name` and `age` methods. We will store this information in instance variables, which are always prefixed with an *at* (`@`) character. We also want a Person to come into existence with a name of our choice and an age of zero. We code the "come into existence" part with a special `initialize` method, which is normally called a *constructor*:
+`person` ile pek fazla bir şey yapamayız, bu yüzden ona bazı kavramlar ekleyelim. Bir `Person`'ın bir `name`'i ve bir `age`'i vardır. "Her şey bir nesne" bölümünde, bir nesnenin bir tipe sahip olduğunu ve nesnelerle etkileşime girmenin tek yolu olan bazı metotlara yanıt verdiğini söyledik, bu yüzden hem `name` hem de `age` metotlarına ihtiyacımız olacak. Bu bilgiyi her zaman, bir *at*(@) karakteri öneki olan değişkenlere depolayacağız. Aynı zamanda, bir Person'ın, bizim seçeceğimiz bir isim ve sıfır yaşıyla var olmasını istiyoruz. Normalde * constructor(yapıcı) * olarak adlandırılan özel bir `initialize` metodu ile "var olmaya başlama" bölümünü kodlarız:
 
 ```crystal
 class Person
@@ -27,7 +27,7 @@ class Person
 end
 ```
 
-Now we can create people like this:
+Artık bu şekilde Person nesneleri oluşturabiliriz:
 
 ```crystal
 john = Person.new "John"
@@ -39,11 +39,11 @@ john.age #=> 0
 peter.name #=> "Peter"
 ```
 
-(If you wonder why we needed to specify that `name` is a `String` but we didn't need to do it for `age`, check the [global type inference algorithm](type_inference.html))
+(Eğer `name`'in bir `String` olduğunu belirtmemiz gerektiğini ve bunu `age` için yapmamız gerekmediğinin nedenini merak ediyorsanız, [Global tip çıkarım algoritmasını] kontrol ediniz. (type_inference.html))
 
-Note that we create a `Person` with `new` but we defined the initialization in an `initialize` method, not in a `new` method. Why is this so?
+Unutmayın ki `new` ile bir `Person` oluştururuz, ancak başlatmayı, `new` metodu ile değil bir `initialize` metodu ile tanımladık. Peki neden bu böyle?
 
-The answer is that when we defined an `initialize` method Crystal defined a `new` method for us, like this:
+Bunun cevabı, bir `initialize` metodu tanımladığımız zaman Crystal, bizim için şu gibi bir `new` metodu tanımladı:
 
 ```crystal
 class Person
@@ -55,7 +55,6 @@ class Person
 end
 ```
 
-First, note the `self.new` notation. This means that the method belongs to the **class** `Person`, not to particular instances of that class. This is why we can do `Person.new`.
+İlk olarak, `self.new` gösterimine dikkat edin. Bu, metodun o sınıfa ait belirli örneklere değil ** sınıfa ** yani `Person`'a ait olduğu anlamına gelir. Bu sebeple `Person.new` yapabiliriz.
 
-Second, `allocate` is a low-level class method that creates an uninitialized object of the given type. It basically allocates the necessary memory for the object, then `initialize` is invoked on it and finally the instance is returned. You generally never invoke `allocate`, as it is [unsafe](unsafe.html), but that's the reason why `new` and `initialize` are related.
-
+İkincisi, `allocate`, verilen tipe ait başlatılmamış nesneyi yaratan düşük seviye bir sınıf metodur. Temelde nesne için gerekli belleği tahsis eder, daha sonra üzerinde `initialize` çağrılır ve nihayet örnek geri döndürülür. [Güvenliksiz] (unsafe.html) olduğu için genellikle `allocate` komutunu çağırmazsınız, fakat ` new` ve `initialize`'ın ilişkilendirilmesinin nedeni budur.

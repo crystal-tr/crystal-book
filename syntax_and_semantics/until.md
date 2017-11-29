@@ -13,4 +13,4 @@ while !bir_koşul
 end
 ```
 
-`break` ve` next` ayrıca `until` içinde de kullanılabilir.
+`break` ve `next` ayrıca `until` içinde de kullanılabilir.

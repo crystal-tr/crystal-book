@@ -1,8 +1,8 @@
-# Type inference
+# Tip çıkarımı
 
-Crystal's philosophy is to require as few type annotations as possible. However, some type annotations are required.
+Crystal'in felsefesi, mümkün olduğunca az sayıda tip açıklaması yapmaktır. Bununla birlikte, bazen tip açıklamaları gereklidir.
 
-Consider a class definition like this:
+Böyle bir sınıf tanımı düşünün:
 
 ```crystal
 class Person
@@ -11,21 +11,21 @@ class Person
   end
 end
 ```
+Kolayca `@age`'in bir tamsayı olduğunu görebiliriz, ancak` @name`'in tipinin ne olduğunu bilmiyoruz. Derleyici, onun tipini 'Person' sınıfının tüm kullanımlarından çıkarabilir. Bununla birlikte, bunu yaparken birkaç sorun ile karşılaşabiliriz:
 
-We can quickly see that `@age` is an integer, but we don't know what's the type of `@name`. The compiler could infer its type from all uses of the `Person` class. However, doing so has a few issues:
+* Kodu okuyan birisi için tip açık değildir ve okuyan kişi bunu bulmak için bütün "Person" kullanımlarını da kontrol etmesi gerekir.
 
-* The type is not obvious for a human reading the code: she would also have to check all uses of `Person` to find this out.
-* Some compiler optimizations, like having to analyze a method just once, and incremental compilation, are nearly impossible to do.
+* Bir metodu yalnızca bir kez analiz etmek zorunda kalmak gibi bazı derleyici optimizasyonlarının yapılması neredeyse imkansızdır.
 
-As a code base grows, these issues gain more relevance: understanding a project becomes harder, and compile times become unbearable.
+Bir kod tabanı büyüdükçe, bu konular daha fazla önem kazanır: Bir projeyi anlamanız zorlaşır ve derleme zamanları katlanılmaz hale gelir.
 
-For this reason, Crystal needs to know, in an obvious way (as obvious as to a human), the types of instance and [class](class_variables.html) variables.
+Bu nedenle, Crystal, açık bir şekilde(bir insanın anlayabileceği kadar açık) örnek ve [sınıf](class_variables.html) değişkenlerinin tiplerini bilmelidir.
 
-There are several ways to let Crystal know this.
+Crystal'ın bunu bilmesinin birkaç yolu vardır.
 
-## Use an explicit type annotation
+## Açık bir tip açıklaması kullanın
 
-The easiest, but probably most tedious, way is to use explicit type annotations.
+En kolay, ancak muhtemelen en sıkıcı yolu, açık açıklama ek açıklamalar kullanmaktır.
 
 ```crystal
 class Person
@@ -38,21 +38,21 @@ class Person
 end
 ```
 
-## Don't use an explicit type annotation
+## Açık bir tip açıklaması kullanmayın
 
-If you omit an explicit type annotation the compiler will try to infer the type of instance and class variables using a bunch of syntactic rules.
+Açık bir tip açıklamasını atlarsanız, derleyici bir dizi sözdizimsel kurallar kullanarak örnek ve sınıf değişkenlerini türetmeye çalışacaktır.
 
-For a given instance/class variable, when a rule can be applied and a type can be guessed, the type is added to a set. When no more rules can be applied, the inferred type will be the [union](union_types.html) of those types. Additionally, if the compiler infers that an instance variable isn't always initialized, it will also include the [Nil](literals/nil.html) type.
+Verilen bir örnek/sınıf değişkeni için, bir kural uygulanabilir ve bir tip tahmin edilebilir olduğunda, tip bir gruba eklenir. Başka hiçbir kural uygulanamadığında, çıkarım yapılan tipi bu tiplerin [birleşimi(union)] (union_types.html) olacaktır. Ayrıca, derleyici, bir örnek değişkeni her zaman başlatılamadığını bildirirse, [Nil] (literal / nil.html) tipini de içerecektir.
 
-The rules are many, but usually the first three are most used. There's no need to remember them all. If the compiler gives an error saying that the type of an instance variable can't be inferred you can always add an explicit type annotation.
+Kurallar çoktur, ancak genellikle en çok kullanılan ilk üçüdür. Ayrıca hepsini hatırlamaya hiç gerek yok. Derleyici, bir örnek değişkeni tipinin çıkarılamadığını söyleyen bir hata verirse, her zaman açık bir tip açıklaması ekleyebilirsiniz.
 
-The following rules only mention instance variables, but they apply to class variables as well. They are:
+Aşağıdaki kurallar yalnızca örnek değişkenlerden bahsetmekle birlikte, sınıf değişkenleri için de geçerlidir. Onlar:
 
-### 1. Assigning a literal value
+### 1.Gerçek değer atama
 
-When a literal is assigned to an instance variable, the literal's type is added to the set. All [literals](literals.html) have an associated type.
+Bir örnek değişkene bir değişmez tayin edildiğinde, değişmezin tipi kümeye eklenir. Tüm [literaller] (literals.html) ilişkili bir tipe sahiptir.
 
-In the following example, `@name` is inferred to be `String` and `@age` to be `Int32`.
+Aşağıdaki örnekte `@name`,`String` ve `@age` öğeleri `Int32` olarak çıkarımı yapılacaktır.
 
 ```crystal
 class Person
@@ -63,7 +63,7 @@ class Person
 end
 ```
 
-This rule, and every following rule, will also be applied in methods other than `initialize`. For example:
+Bu kural ve takip eden her kural, `initialize` da dahil olmak üzere her metot için uygulanacaktır. Örneğin:
 
 ```crystal
 class SomeObject
@@ -73,23 +73,22 @@ class SomeObject
 end
 ```
 
-In the above case, `@lucky_number` will be inferred to be `Int32 | Nil`: `Int32` because 42 was assigned to it, and `Nil` because it wasn't assigned in all of the class' initialize methods.
+Yukarıdaki durumda `@lucky_number`'ın `Int32 | Nil`: `Int32` olduğu varsayılacaktır, çünkü ona atanmış 42 ve `Nil`, çünkü sınıflarının hiçbirinde başlangıç metodunda atanmamıştı.
 
-### 2. Assigning the result of invoking the class method `new`
+### 2. `new` sınıf metodunun çağırılması sonucu atama
 
-When an expression like `Type.new(...)` is assigned to an instance variable, the type `Type` is added to the set.
+Bir örnek değişkene `Type.new(...)` gibi bir ifade atandığı zaman, o tip kümeye eklenir.
 
-In the following example, `@address` is inferred to be `Address`.
+Aşağıdaki örnekte, `@address`, `Address` olarak çıkarımı yapılacaktır.
 
 ```crystal
 class Person
   def initialize
-    @address = Address.new("somewhere")
+    @address = Address.new("Herhangi bir yer")
   end
 end
 ```
-
-This also is applied to generic types. Here `@values` is inferred to be `Array(Int32)`.
+Bu, jenerik tiplere de uygulanır. Burada `@values`, `Array (Int32)` olarak çıkarımı yapılır.
 
 ```crystal
 class Something
@@ -99,11 +98,11 @@ class Something
 end
 ```
 
-**Note**: a `new` method might be redefined by a type. In that case the inferred type will be the one returned by `new`, if it can be inferred using some of the next rules.
+**Not**: bir `new` metodu bir tipe göre yeniden tanımlanabilir. Bu gibi bir durumda; daha sonraki kurallardan bazıları kullanılarak çıkarımlanmış tip, `new` tarafından geri dönen tip olacaktır.
 
-### 3. Assigning a variable that is a method argument with a type restriction
+### 3. Bir tip kısıtlamalı metot argümanı olan değişkeni atama
 
-In the following example `@name` is inferred to be `String` because the method argument `name` has a type restriction of type `String`, and that argument is assigned to `@name`.
+Aşağıdaki örnekte, `name` `String` tipi bir kısıtlamaya sahip olduğu için `name` öğesinin `String` olduğu varsayılmaktadır ve bu argüman `@name` olarak atanmaktadır.
 
 ```crystal
 class Person
@@ -112,18 +111,17 @@ class Person
   end
 end
 ```
-
-Note that the name of the method argument is not important; this works as well:
+Metot argümanının adının önemli olmadığını unutmayın; bu şekilde de çalışacaktır:
 
 ```crystal
 class Person
-  def initialize(obj : String)
-    @name = obj
+  def initialize(obje : String)
+    @name = obje
   end
 end
 ```
 
-Using the shorter syntax to assign an instance variable from a method argument has the same effect:
+Bir örnek değişkeni daha kısa bir sözdizimi kullanarak metot argümanından atayamak da aynı etkiyi yapacaktır:
 
 ```crystal
 class Person
@@ -131,8 +129,7 @@ class Person
   end
 end
 ```
-
-Also note that the compiler doesn't check whether a method argument is reassigned a different value:
+Ayrıca, derleyici, bir metot argümanının farklı bir değere yeniden atanıp atanmadığını denetlemediğine dikkat edin:
 
 ```crystal
 class Person
@@ -142,12 +139,11 @@ class Person
   end
 end
 ```
+Yukarıdaki durumda, derleyici yine de `@name` öğesini `String` olarak çıkaracak ve daha sonra bu metodu tam olarak yazarken `Int32`'nin `String` tipinde bir değişkene atanamayacağını söyleyerek derleme zamanı hatası verecektir. `@name` bir `String` olması gerekmiyorsa, açık bir tip açıklaması kullanın.
 
-In the above case, the compiler will still infer `@name` to be `String`, and later will give a compile time error, when fully typing that method, saying that `Int32` can't be assigned to a variable of type `String`. Use an explicit type annotation if `@name` isn't supposed to be a `String`.
+### 4. Dönüş tipi açıklamasına sahip bir sınıf metodunun sonucunu atama
 
-### 4. Assigning the result of a class method that has a return type annotation
-
-In the following example, `@address` is inferred to be `Address`, because the class method `Address.unknown` has a return type annotation of `Address`.
+Aşağıdaki örnekte, `Address.unknown` sınıf metodu `Address` öğesinin dönüş tipi açıklamasına sahip olduğu için `@address` öğesinin `Address` olduğu söylenebilir.
 
 ```crystal
 class Person
@@ -166,7 +162,7 @@ class Address
 end
 ```
 
-In fact, the above code doesn't need the return type annotation in `self.unknown`. The reason is that the compiler will also look at a class method's body and if it can apply one of the previous rules (it's a `new` method, or it's a literal, etc.) it will infer the type from that expression. So, the above can be simply written like this:
+Aslında, yukarıdaki kod `self.unknown`'da dönüş tipi açıklamasına ihtiyaç duymaz. Bunun nedeni, derleyicinin bir sınıf metodunun gövdesine de bakması ve önceki kurallardan birini uygulayabilmesi (yeni bir metot veya bir constant, vb.), bu ifadenin türünü çıkaracağıdır. Yani, yukarıdaki gibi basitçe yazılabilir:
 
 ```crystal
 class Person
@@ -176,7 +172,7 @@ class Person
 end
 
 class Address
-  # No need for a return type annotation here
+  # Burada bir dönüş tipi açıklamasına gerek yok
   def self.unknown
     new("unknown")
   end
@@ -186,11 +182,11 @@ class Address
 end
 ```
 
-This extra rule is very convenient because it's very common to have "constructor-like" class methods in addition to `new`.
+Bu fazladan kural çok uygundur çünkü `new`'e ek olarak "constructor benzeri" sınıf metotlarına sahip olmak çok yaygındır.
 
-### 5. Assigning a variable that is a method argument with a default value
+### 5. Bir metot argümanı olan bir değişkeni varsayılan değerle atama
 
-In the following example, because the default value of `name` is a string literal, and it's later assigned to `@name`, `String` will be added to the set of inferred types.
+Aşağıdaki örnekte, `name` varsayılan değeri bir string literalidir ve daha sonra `@name`'ye atandığından, çıkarılmış tipler kümesine `String` eklenecektir.
 
 ```crystal
 class Person
@@ -200,7 +196,7 @@ class Person
 end
 ```
 
-This of course also works with the short syntax:
+Bu elbette kısa sözdizimi ile de çalışır:
 
 ```crystal
 class Person
@@ -209,13 +205,13 @@ class Person
 end
 ```
 
-The default value can also be a `Type.new(...)` method or a class method with a return type annotation.
+Varsayılan değer ayrıca, `Type.new(...)` metodu veya dönüş tipi açıklaması olan bir sınıf metodu olabilir.
 
-### 6. Assigning the result of invoking a `lib` function
+### 6. Bir `lib` fonksiyonunun çağrılması sonucu atama
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the return type when assigning it to an instance variable.
+Bir [lib fonksiyonu](c_bindings/fun.html) açık tiplere sahip olması gerektiği için, derleyici onu bir örnek değişkene atarken kullanabilir.
 
-In the following example `@age` is inferred to be `Int32`.
+Aşağıdaki örnekte `@age`, `Int32` olarak çıkarımı yapılmıştır.
 
 ```crystal
 class Person
@@ -229,11 +225,11 @@ lib LibPerson
 end
 ```
 
-### 7. Using an `out` lib expression
+### 7. Bir `out` lib ifadesi kullanma
 
-Because a [lib function](c_bindings/fun.html) must have explicit types, the compiler can use the `out` argument's type, which should be a pointer type, and use the dereferenced type as a guess.
+Bir [lib fonksiyonu](c_bindings/fun.html) açık tiplere sahip olması gerektiği için, derleyici pointer(işaretçi) tipinde olması gereken `out` argümanının tipini kullanabilir ve referansından ayrılmış tipi tahmini şekilde kullanabilir.
 
-In the following example `@age` is inferred to be `Int32`.
+Aşağıdaki örnekte `@age`, `Int32` olarak çıkarılmıştır.
 
 ```crystal
 class Person
@@ -247,9 +243,9 @@ lib LibPerson
 end
 ```
 
-### Other rules
+### Diğer kurallar
 
-The compiler will try to be as smart as possible to require less explicit type annotations. For example, if assigning an `if` expression, type will be inferred from the `then` and `else` branches:
+Derleyici, daha az açıklama gerektirecek kadar akıllı olmaya çalışacaktır. Örneğin, bir `if` ifadesi atanırken, `then` ve `else` dallarından tipini çıkaracaktır:
 
 ```crystal
 class Person
@@ -259,9 +255,9 @@ class Person
 end
 ```
 
-Because the `if` above (well, technically a ternary operator, but it's similar to an `if`) has integer literals, `@age` is successfully inferred to be `Int32` without requiring a redundant type annotation.
+Yukarıdaki `if` (aslında teknik yönden bu bir ternary operatör, ancak bir `if`'e benzemektedir) integer literaline sahip olduğu için, `@age`, gereksiz bir tip açıklaması gerektirmeden başarılı bir şekilde `Int32` olduğu çıkarılır.
 
-Another case is `||` and `||=`:
+Başka bir durum ise `||` ve `|| =`:
 
 ```crystal
 class SomeObject
@@ -270,10 +266,9 @@ class SomeObject
   end
 end
 ```
+Yukarıdaki örnekte `@lucky_number`'ın `Int32 | Nil` olduğu varsayılacaktır. Bu, tembel şekilde başlatılan değişkenler için çok yararlıdır.
 
-In the above example `@lucky_number` will be inferred to be `Int32 | Nil`. This is very useful for lazily initialized variables.
-
-Constants will also be followed, as it's pretty simple for the compiler (and a human) to do so.
+Constantlar(değişmezler) de derleyici (ve bir insan) tarafından kolay bir şekilde takip edilecektir.
 
 ```crystal
 class SomeObject
@@ -284,4 +279,4 @@ class SomeObject
 end
 ```
 
-Here rule 5 (argument's default value) is used, and because the constant resolves to an integer literal, `@lucky_number` is inferred to be `Int32`.
+Burada kural 5 (argümanın varsayılan değeri) kullanılır ve constant(değişmez) integer literali olarak çözümlediğinden, `@lucky_number`, `Int32` olarak çıkarım yapılır.

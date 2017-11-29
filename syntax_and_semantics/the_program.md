@@ -1,18 +1,18 @@
-# The Program
+# Program
 
-The program is a global object in which you can define types, methods and file-local variables.
+Program nesnesi, içinde tipler, metodlar ile dosya ve yerel değişkenleri tanımlayabileceğiniz global bir nesnedir.
 
 ```crystal
-# Defines a method in the program
+# Programda bir metod tanımlanıyor.
 def add(x, y)
   x + y
 end
 
-# Invokes the add method in the program
+# Programda add metodu çağırılıyor.
 add(1, 2) #=> 3
 ```
 
-A method's value is the value of its last expression; there's no need for explicit `return` expressions. However, explicit `return` expressions are possible:
+Bir metodun değeri, son ifadesinin değeridir; açık olarak bir `return` ifadesine gerek yoktur. Bununla birlikte, açık olarak`return` ifadesi kullanmak mümkündür.
 
 ```crystal
 def even?(num)
@@ -24,7 +24,7 @@ def even?(num)
 end
 ```
 
-When invoking a method without a receiver, like `add(1, 2)`, it will be searched for in the program if not found in the current type or any of its ancestors.
+`add(1, 2)` gibi bir alıcısı(receiver) olmayan bir metod çağırılırken, geçerli tipe veya atasına rastlanmazsa programın içinde aranır.
 
 ```crystal
 def add(x, y)
@@ -33,10 +33,10 @@ end
 
 class Foo
   def bar
-    # invokes the program's add method
+    # Programın add metodu çağırılıyor.
     add(1, 2)
 
-    # invokes Foo's baz method
+    # Foo's baz metodu çağırılıyor.
     baz(1, 2)
   end
 
@@ -46,7 +46,7 @@ class Foo
 end
 ```
 
-If you want to invoke the program's method, even though the current type defines a method with the same name, prefix the call with `::`:
+Programın metodunu çağırmak isterseniz, geçerli tipin aynı isimde bir metodu tanımlanmış olsa bile, çağrıyı `::` önekiyle yapmalıdır:
 
 ```crystal
 def baz(x, y)
@@ -65,7 +65,7 @@ class Foo
 end
 ```
 
-Variables declared in a program are not visible inside methods:
+Bir programda bildirilen değişkenler metotlarda görünmez:
 
 ```crystal
 x = 1
@@ -77,27 +77,27 @@ end
 add(2)
 ```
 
-Parentheses in method invocations are optional:
+Metod çağrılarında parantezler isteğe bağlıdır:
 
 ```crystal
-add 1, 2 # same as add(1, 2)
+add 1, 2 # add(1, 2) ile aynı
 ```
 
-## Main code
+## Ana kod
 
-Main code, the code that is run when you compile and run a program, can be written directly in a source file without the need to put it in a special "main" method:
+Bir program derlenip ve çalıştırıldığında çalışan kod olan ana kod, doğrudan bir kaynak dosyasına "main" bir metod koymaya gerek kalmadan doğrudan yazılabilir:
 
 ```crystal
-# This is a program that prints "Hello Crystal!"
+# Ekrana "Hello Crystal!" yazdıran bir program
 puts "Hello Crystal!"
 ```
 
-Main code can also be inside type declarations:
+Ana kod tip tanımlamalarının içinde de olabilir:
 
 ```crystal
-# This is a program that prints "Hello"
+# Ekrana "Hello" yazdıran bir proram
 class Hello
-  # 'self' here is the Hello class
+  # 'self' burada bir Hello sınıfı
   puts self
 end
 ```
