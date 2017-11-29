@@ -8,7 +8,7 @@ person = Person.new
 
 Burada `person`, `Person` sınıfının bir örneğidir.
 
-`person` ile pek fazla bir şey yapamayız, bu yüzden ona bazı kavramlar ekleyelim. Bir `Person`'ın bir `name`'i ve bir `age`'i vardır. "Her şey bir nesne" bölümünde, bir nesnenin bir türe sahip olduğunu ve nesnelerle etkileşime girmenin tek yolu olan bazı metotlara yanıt verdiğini söyledik, bu yüzden hem `name` hem de `age` metotlarına ihtiyacımız olacak. Bu bilgiyi her zaman, bir *at*(@) karakteri öneki olan değişkenlere depolayacağız. Aynı zamanda, bir Person'ın, bizim seçeceğimiz bir isim ve sıfır yaşıyla var olmasını istiyoruz. Normalde * constructor(yapıcı) * olarak adlandırılan özel bir `initialize` metodu ile "var olmaya başlama" bölümünü kodlarız:
+`person` ile pek fazla bir şey yapamayız, bu yüzden ona bazı kavramlar ekleyelim. Bir `Person`'ın bir `name`'i ve bir `age`'i vardır. "Her şey bir nesne" bölümünde, bir nesnenin bir tipe sahip olduğunu ve nesnelerle etkileşime girmenin tek yolu olan bazı metotlara yanıt verdiğini söyledik, bu yüzden hem `name` hem de `age` metotlarına ihtiyacımız olacak. Bu bilgiyi her zaman, bir *at*(@) karakteri öneki olan değişkenlere depolayacağız. Aynı zamanda, bir Person'ın, bizim seçeceğimiz bir isim ve sıfır yaşıyla var olmasını istiyoruz. Normalde * constructor(yapıcı) * olarak adlandırılan özel bir `initialize` metodu ile "var olmaya başlama" bölümünü kodlarız:
 
 ```crystal
 class Person
